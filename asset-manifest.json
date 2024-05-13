@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/panglew.github.io/static/css/main.7b474283.css",
+    "main.js": "/panglew.github.io/static/js/main.140c4fdf.js",
+    "index.html": "/panglew.github.io/index.html",
+    "main.7b474283.css.map": "/panglew.github.io/static/css/main.7b474283.css.map",
+    "main.140c4fdf.js.map": "/panglew.github.io/static/js/main.140c4fdf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7b474283.css",
+    "static/js/main.140c4fdf.js"
+  ]
+}
