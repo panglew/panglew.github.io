@@ -1,5 +1,4 @@
 """Projects.py"""
-import string
 from flask import render_template, request, redirect, url_for, session
 import mywebsite
 import mywebsite.model
