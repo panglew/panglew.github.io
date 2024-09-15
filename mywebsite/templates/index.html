@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- This is the Website Nav, i.e. logo, home, explore, user profile links-->
+    <nav>
+        <div class="container">
+            <p style="display: flex; align-items:center" >
+
+                <a href="/"> Home Page </a>  
+
+            </p>
+            
+            <p>
+                <a href="/classes/"> Classes & Projects </a> 
+                |
+                <a href="/fragrances/"> Fragrances </a>
+            </p>
+        </div>
+
+        <hr>
+    </nav>
+
+    <section>
+
+        <h2>Welcome to my website!</h2>
+        <p>It is currently in development, so not everything is finished to its full extent yet.</p>
+
+        <p> <a href="/about/"> Here's </a>my about me!</p>
+
+        <p>Here are the main computer science courses I've taken during my academic career: </p>
+        {% for cl in classes %} 
+
+            {% if cl.has_projects == 'T' %}
+            <div class="cl">
+                <a href="/class/{{ cl.class_code }}/"> {{ cl.class_code }} - {{ cl.class_name }} </a>
+            </div>
+            {% elif cl.has_projects == 'F' %}
+            <div class="cl"></div>
+                <p> {{ cl.class_code }} - {{ cl.class_name }} </p>
+            </div>
+            {% endif %}
+
+        {% endfor %}
+
+    </section>
+</body>
+</html>
