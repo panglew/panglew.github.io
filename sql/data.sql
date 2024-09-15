@@ -64,7 +64,7 @@ VALUES ('EECS 203', 'Discrete Mathematics', 'Introduction to the mathematical fo
                                                              neural networks, and their applications in object detection, facial recognition, 
                                                              and natural language processing.', 'F');
 
-INSERT INTO projects(project_id, project_name, text, langauges_and_tools, class_code)
+INSERT INTO projects(project_id, project_name, text, languages_and_tools, class_code)
 VALUES ('280-1', 'To be changed.', 'To be changed.', 'C++', 'EECS 280'),
        ('280-2', 'To be changed.', 'To be changed.', 'C++', 'EECS 280'),
        ('280-3', 'To be changed.', 'To be changed.', 'C++', 'EECS 280'),

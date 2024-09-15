@@ -1,7 +1,24 @@
 """Models.py"""
 import sqlite3
+import uuid
+import pathlib
 import flask
 import mywebsite
+
+def gen_filename(filename):
+    """Generate filename for files which will get newly uploaded."""
+    stem = uuid.uuid4().hex
+    suffix = pathlib.Path(filename).suffix.lower()
+    uuid_basename = f"{stem}{suffix}"
+
+    return uuid_basename
+
+
+def upload_file(filename, file_obj):
+    """Upload a file to the database."""
+    path = mywebsite.app.config["UPLOAD_FOLDER"]/filename
+    file_obj.save(path)
+
 
 # ALL OF THE BELOW FUNCTIONS HAVE BEEN BORROWED FROM
 # "EECS485 - Web Systems"

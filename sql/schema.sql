@@ -27,7 +27,7 @@ CREATE TABLE projects
     project_id VARCHAR(10) NOT NULL,
     project_name VARCHAR(64) NOT NULL,
     text VARCHAR(1024) NOT NULL,
-    langauges_and_tools VARCHAR(64) NOT NULL,
+    languages_and_tools VARCHAR(64) NOT NULL,
     class_code VARCHAR(22),
 
 	PRIMARY KEY (project_id),
@@ -38,10 +38,20 @@ CREATE TABLE projects
 /*  Project Files */
 CREATE TABLE project_files
 (
-    file_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    project_id INTEGER NOT NULL,
+    project_id VARCHAR(10) NOT NULL,
+    descriptor VARCHAR(64),
     filename VARCHAR(64) NOT NULL,
 
+    PRIMARY KEY(filename),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id) ON DELETE CASCADE
+);
+
+CREATE TABLE project_links
+(
+    project_id VARCHAR(10) NOT NULL,
+    url VARCHAR(64) NOT NULL,
+
+    PRIMARY KEY(url),
     FOREIGN KEY (project_id) REFERENCES projects(project_id) ON DELETE CASCADE
 );
 
