@@ -11,7 +11,6 @@ import mywebsite.model
 @mywebsite.app.route('/')
 def show_index():
     """Display Index."""
-
     # Get connection to database and set is_admin to false
     connection = mywebsite.model.get_db()
     is_admin = False

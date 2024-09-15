@@ -1,0 +1,71 @@
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header,
+nav {
+    background-color: #1f1f1f;
+    border-bottom: 1px solid #444444;
+}
+
+a {
+    color: #bb86fc;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+hr {
+    border-color: #444444;
+}
+
+/* Container to center the content and limit the width */
+.classes-container {
+    max-width: 75%;      /* Constrain container width to 75% of the viewport */
+    margin: 0 auto;      /* Center the container */
+    padding: 0 20px;     /* Optional: add some padding to the sides */
+}
+
+/* Box around each class */
+.cl-box {
+    border: 1px solid #444444;
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px; /* Space between boxes */
+    padding: 20px;       /* Space inside the box */
+    background-color: #2e2e2e; /* Slightly different background for the box */
+}
+
+/* Ensure readability and set max-width */
+.description {
+    line-height: 1.5;   /* Improve readability */
+    word-wrap: break-word;   /* Ensure text wraps correctly */
+    max-width: 100%;    /* Don't constrain description width */
+    text-align: left;   /* Align text to the left */
+    margin: 0;          /* No auto margin to avoid centering */
+}
+
+/* Flexbox container for centering project elements */
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+}
+
+.project {
+    margin: 5px 0;           /* Space around project links */
+    text-align: center;      /* Center align text within project div */
+    width: 100%;             /* Ensure project links take full width for better click area */
+}
+
+/* Project link styling */
+.project a {
+    color: #bb86fc;
+    text-decoration: none;
+}
+
+.project a:hover {
+    color: #ffffff;
+}
