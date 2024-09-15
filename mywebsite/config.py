@@ -14,6 +14,7 @@ SESSION_COOKIE_NAME = 'login'
 # File Upload to var/uploads/
 MYWEBSITE = pathlib.Path(__file__).resolve().parent.parent
 UPLOAD_FOLDER = MYWEBSITE/'var'/'uploads'
+JSON_FOLDER = MYWEBSITE/'var'/'jsons'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024
 

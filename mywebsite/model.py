@@ -1,9 +1,20 @@
 """Models.py"""
 import sqlite3
+import json
 import uuid
 import pathlib
 import flask
 import mywebsite
+
+def load_content(location):
+    """Load json file."""
+    with open(location, 'r') as file:
+        return json.load(file)
+
+def save_content(location, content):
+    """Change json file."""
+    with open(location, 'w') as file:
+        json.dump(content, file, indent=4)
 
 def gen_filename(filename):
     """Generate filename for files which will get newly uploaded."""
