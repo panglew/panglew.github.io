@@ -7,58 +7,52 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="dark-mode">
-    <header>
-        <!-- This is the Website Nav, i.e. logo, home, explore, user profile links-->
-        <nav>
-            <div class="container">
-                <p style="display: flex; align-items:center" >
-                    <a href="/"> Home Page </a>  
-                </p>
-                <p>
-                    <a href="/classes/"> Classes & Projects </a> 
-                    |
-                    <a href="/fragrances/"> Fragrances </a>
-                </p>
-            </div>
+
+    <div class="navbar">
+        <a href="{{ url_for('show_index') }}" id="homeLink" class="nav-link">Home</a>
+        <a href="{{ url_for('show_about') }}" id="aboutLink" class="nav-link">About</a>
+        <a href="{{ url_for('static', filename='/views/projects.html') }}" id="projectsLink" class="nav-link">Projects</a>
+        <a href="{{ url_for('show_fragrances') }}" id="fragrancesLink" class="nav-link">Fragrances</a>
+        <a href="/contact/" id="contactLink" class="nav-link">Contact</a>
+    </div>
+
+    <div class="content">
+        <section>
+            
+            <h1> {{ project_data.class_code }}: {{ project_data.project_name }} </h1>
+            <h4> Languages & Tools Used: {{ project_data.languages_and_tools }}</h4>
             <hr>
-        </nav>
-    </header>
+            <p> {{ project_data.text }}</p>
 
-    <section>
-        
-        <h1> {{ project_data.class_code }}: {{ project_data.project_name }} </h1>
-        <h4> Languages & Tools Used: {{ project_data.languages_and_tools }}</h4>
+        </section>
+
+        {% if is_admin %}
         <hr>
-        <p> {{ project_data.text }}</p>
+        <!-- Form for editing project -->
+        <form action="{{ url_for('show_project', project_id_slug=project_data['project_id']) }}" method="post" enctype="multipart/form-data">
+            <label for="project_name">Project Name:</label>
+            <input type="text" id="project_name" name="project_name" value="{{ project_data['project_name'] }}"/><br><br>
 
-    </section>
+            <label for="text">Description:</label>
+            <textarea id="text" name="text" rows="4">{{ project_data['text'] }}</textarea><br><br>
 
-    {% if is_admin %}
-    <hr>
-    <!-- Form for editing project -->
-    <form action="{{ url_for('show_project', project_id_slug=project_data['project_id']) }}" method="post" enctype="multipart/form-data">
-        <label for="project_name">Project Name:</label>
-        <input type="text" id="project_name" name="project_name" value="{{ project_data['project_name'] }}"/><br><br>
+            <label for="languages_and_tools">Languages and Tools:</label>
+            <input type="text" id="languages_and_tools" name="languages_and_tools" value="{{ project_data['languages_and_tools'] }}"/><br><br>
 
-        <label for="text">Description:</label>
-        <textarea id="text" name="text" rows="4">{{ project_data['text'] }}</textarea><br><br>
+            <label for="image">Upload Image or GIF:</label>
+            <input type="file" id="image" name="image" accept="image/*"/><br><br>
 
-        <label for="languages_and_tools">Languages and Tools:</label>
-        <input type="text" id="languages_and_tools" name="languages_and_tools" value="{{ project_data['languages_and_tools'] }}"/><br><br>
+            <label for="image_text">Text under Image/GIF:</label>
+            <textarea id="image_text" name="image_text" rows="2">{{ project_data['image_text'] }}</textarea><br><br>
 
-        <label for="image">Upload Image or GIF:</label>
-        <input type="file" id="image" name="image" accept="image/*"/><br><br>
+            <label for="external_link">External Link:</label>
+            <input type="url" id="external_link" name="external_link" value="{{ project_data['external_link'] }}"/><br><br>
 
-        <label for="image_text">Text under Image/GIF:</label>
-        <textarea id="image_text" name="image_text" rows="2">{{ project_data['image_text'] }}</textarea><br><br>
+            <input type="submit" name="update" value="Submit"/>
 
-        <label for="external_link">External Link:</label>
-        <input type="url" id="external_link" name="external_link" value="{{ project_data['external_link'] }}"/><br><br>
-
-        <input type="submit" name="update" value="Submit"/>
-
-        <input type="hidden" name="operation" value="edit_project"/>
-    </form>
-    {% endif %}
+            <input type="hidden" name="operation" value="edit_project"/>
+        </form>
+        {% endif %}
+    </div>
 </body>
 </html>

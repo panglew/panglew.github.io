@@ -3,43 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ About }}</title>
+    <title>About</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body class="dark-mode">
-    <header>
-        <nav>
-            <div class="container">
-                <p style="display: flex; align-items:center">
-                    <a href="/"> Home Page </a>
-                </p>
-                <p>
-                    <a href="/classes/"> Classes & Projects </a> |
-                    <a href="/fragrances/"> Fragrances </a>
-                </p>
-            </div>
-            <hr>
-        </nav>
-    </header>
 
-    <main>
-        <h1>{{ page_title }}</h1>
-        <p>{{ about_text }}</p>
+    <div class="navbar">
+        <a href="{{ url_for('show_index') }}" id="homeLink" class="nav-link">Home</a>
+        <a href="{{ url_for('show_about') }}" id="aboutLink" class="nav-link">About</a>
+        <a href="{{ url_for('static', filename='/views/projects.html') }}" id="projectsLink" class="nav-link">Projects</a>
+        <a href="{{ url_for('show_fragrances') }}" id="fragrancesLink" class="nav-link">Fragrances</a>
+        <a href="/contact/" id="contactLink" class="nav-link">Contact</a>
+    </div>
 
-        {% if is_admin %}
-        <hr>
-        <h2>Edit About Page</h2>
-        <form action="{{ url_for('show_about') }}" method="post">
-            <label for="page_title">Page Title:</label>
-            <input type="text" id="page_title" name="page_title" value="{{ page_title }}" required><br><br>
+    <div class="content" style="align-items: flex-start; max-height: 500px; overflow: auto;">
+        <div class="text-section">
+            <h1>About Me</h1>
+            <hr class="title-hr">
 
-            <label for="about_text">About Text:</label>
-            <textarea id="about_text" name="about_text" rows="10" required>{{ about_text }}</textarea><br><br>
+            <h3>I'm <span style="color: #2dbeef">Weston Pangle</span></h3>
 
-            <input type="submit" value="Save">
-        </form>
-        {% endif %}
-    </main>
+            <p>I am a current University of Michigan student, majoring in Computer Science Engineering, graduating after my Winter 2025 semester. I have previously worked as an orientation leader at the University of Michigan, and have taken a wide variety of Computer Science related classes at the University of Michigan.</p>
+
+            <p>Email: pangle.weston@gmail.com</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/weston-pangle-950093254/">My LinkedIn</a></p>
+            <p>GitHub: <a href="https://github.com/panglew">github.com/panglew</a></p>
+
+            <a href="/static/files/panglew_resume.pdf" class="download-button" download>Download My Resume</a>
+        </div>
+
+        <div class="image-section">
+            <!-- Add your image here -->
+            <img src="/static/files/pfp.png" alt="Your Image">
+        </div>
+    </div>
+
+    <div class="education-experience">
+        <div class="education">
+            <h2>Education</h2>
+            <h3>University of Michigan</h3>
+            <p><strong>Major:</strong> B.S.E. in Computer Science Engineering</p>
+            <h4>CS Coursework:</h4>
+            <ul>
+                <li>EECS 203: Discrete Mathematics</li>
+                <li>EECS 280: Programming & Data Structures</li>
+                <li>EECS 281: Data Structures & Algorithms</li>
+                <li>EECS 370: Computer Organization</li>
+                <li>EECS 376: Theory of Computation</li>
+                <li>EECS 481: Software Engineering</li>
+                <li>EECS 482 (6 cr.) + EECS 498-002: Advanced Operating Systems</li>
+                <li>EECS 485: Web Systems</li>
+                <li>EECS 489: Computer Networks (Ongoing)</li>
+                <li>EECS 494: Comp Game Design & Dev (Ongoing)</li>
+                <li>EECS 498 (Special Topics): Machine Learning Basics</li>
+            </ul>
+
+            <h4>Other Technical Coursework:</h4>
+            <ul>
+                <li>Calculus I, II, IV</li>
+                <li>Applied Linear Algebra</li>
+                <li>Physics I & II</li>
+                <li>Statistics</li>
+                <li>Technical Communications</li>
+            </ul>
+
+            <h4>Extra Coursework:</h4>
+            <ul>
+                <li>1st Year Korean</li>
+                <li>Anthropology</li>
+            </ul>
+        </div>
+
+        <div class="experience">
+            <h2>Experience</h2>
+            <h4>Orientation Leader | University of Michigan</h4>
+            <h5>May 2024 - September 2024</h5>
+            <ul> 
+                <li>Coordinated daily orientations for 1000-1500 attendees, demonstrating strong organizational and communication skills.</li>
+                <li>Delivered and planned presentations to large groups, showcasing public speaking abilities and the aptitude to convey complex information clearly.</li>
+                <li>Facilitated small group activities and Q&A sessions, utilizing digital tools to enhance engagement and technical proficiency.</li>
+                <li>Ensured safety and smooth operations by managing logistics, verifying identities, and maintaining accurate records.</li>
+            </ul>
+            <h4>Project Member | Michigan Data Science Team</h4>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='navbar.js') }}"></script>
 
 </body>
 </html>

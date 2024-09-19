@@ -3,49 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Homepage</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="dark-mode">
-    <!-- This is the Website Nav, i.e. logo, home, explore, user profile links-->
-    <nav>
-        <div class="container">
-            <p style="display: flex; align-items:center" >
-                <a href="/"> Home Page </a>  
-            </p>
+
+    <div class="navbar">
+        <a href="{{ url_for('show_index') }}" id="homeLink" class="nav-link">Home</a>
+        <a href="{{ url_for('show_about') }}" id="aboutLink" class="nav-link">About</a>
+        <a href="{{ url_for('static', filename='/views/projects.html') }}" id="projectsLink" class="nav-link">Projects</a>
+        <a href="{{ url_for('show_fragrances') }}" id="fragrancesLink" class="nav-link">Fragrances</a>
+        <a href="/contact/" id="contactLink" class="nav-link">Contact</a>
+    </div>
+
+    <div class="content">
+        <div class="text-section">
+            <h1>Hello! My name is <span style="color: #2dbeef">Weston Pangle</span>, and this is my website!</h1>
+
             <p>
-                <a href="/classes/"> Classes & Projects </a> 
-                |
-                <a href="/fragrances/"> Fragrances </a>
+                I'm a graduating student who's interested in multiple fields related to computer science!
+                The fields I am most interested in are cloud and systems engineering, but I'm willing to
+                learn in any role I have the opportunity to partake in!
             </p>
+
+            <p>
+                This website is being updated every time a significant event has happened, such as a new
+                project, class, or experience!
+            </p>
+
+            <!-- Include a download button here -->
+            <a href="/static/files/panglew_resume.pdf" class="download-button" download>Download My Resume</a>
         </div>
-        <hr>
-    </nav>
 
-    <section>
+        <div class="image-section">
+            <img src="/static/files/pfp.png" alt="Profile Picture">
+        </div>
+    </div>
 
-        <h2>Welcome to my website!</h2>
-        <p>It is currently in development, so not everything is finished to its full extent yet.</p>
-
-        <p> <a href="/about/"> Here's </a>my about me!</p>
-
-        <p>Here are the main computer science courses I've taken during my academic career: </p>
-        {% for cl in classes %} 
-
-            {% if cl.has_projects == 'T' %}
-            <div class="cl">
-                <a href="/class/{{ cl.class_code }}/"> {{ cl.class_code }} - {{ cl.class_name }} </a>
-            </div>
-            {% elif cl.has_projects == 'F' %}
-            <div class="cl"></div>
-                <p> {{ cl.class_code }} - {{ cl.class_name }} </p>
-            </div>
-            {% endif %}
-
-        {% endfor %}
-
-    </section>
+    <script src="{{ url_for('static', filename='navbar.js') }}"></script>
 </body>
 </html>
