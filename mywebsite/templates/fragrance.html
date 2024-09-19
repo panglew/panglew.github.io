@@ -7,24 +7,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="dark-mode">
-    <header>
-        <!-- This is the Website Nav, i.e. logo, home, explore, user profile links-->
-        <nav>
-            <div class="container">
-                <p style="display: flex; align-items:center" >
-                    <a href="/"> Home Page </a>  
-                </p>
-                <p>
-                    <a href="/classes/"> Classes & Projects </a> 
-                    |
-                    <a href="/fragrances/"> Fragrances </a>
-                </p>
-            </div>
-            <hr>
-        </nav>
-    </header>
 
-    This page is still in development. This page will just be for ratings of colognes
-    I have purchased/tried.
+    <div class="navbar">
+        <a href="{{ url_for('show_index') }}" id="homeLink" class="nav-link">Home</a>
+        <a href="{{ url_for('show_about') }}" id="aboutLink" class="nav-link">About</a>
+        <a href="{{ url_for('static', filename='/views/projects.html') }}" id="projectsLink" class="nav-link">Projects</a>
+        <a href="{{ url_for('show_fragrances') }}" id="fragrancesLink" class="nav-link">Fragrances</a>
+        <a href="/contact/" id="contactLink" class="nav-link">Contact</a>
+    </div>
+
+    <div class="content">
+        This page is still in development. This page will just be for ratings of colognes
+        I have purchased/tried.
+    </div>
 
 </body>
