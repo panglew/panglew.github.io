@@ -3,7 +3,6 @@
         {
             "class_code": "EECS 494",
             "class_name": "Comp Game Design & Development",
-            "description": "Design, development, and application of digital games. Topics include: game engines, \n                                                        design patterns, shaders and graphics programming, agile development methods, \n                                                        iterative game/ experience design, project management and resource allocation, \n                                                        virtual reality, classic games, multidisciplinary relationships, product exhibition, \n                                                        and portfolio construction. Students work in teams to develop and exhibit new games.",
             "projects": [
                 {
                     "project_id": "494-1",
@@ -17,7 +16,6 @@
         {
             "class_code": "EECS 489",
             "class_name": "Computer Networks",
-            "description": "Protocols and architectures of computer networks with a specific focus on the Internet. \n                                           Topics include socket programming, naming and addressing, video streaming and content \n                                           distribution, flow and congestion control, routing, and cloud, datacenter, and software-defined \n                                           networks. Students write several substantial programs implementing protocols at different \n                                           layers of the network stack.",
             "projects": [
                 {
                     "project_id": "489-1",
@@ -31,7 +29,6 @@
         {
             "class_code": "EECS 485",
             "class_name": "Web Systems",
-            "description": "Concepts surrounding web systems, applications, and internet scale distributed systems. Topics \n                                     covered include client/server protocols, security, information retrieval and search engines, \n                                     scalable data processing, and fault tolerant systems. The course has substantial projects \n                                     involving development of web applications and web systems.",
             "projects": [
                 {
                     "project_id": "485-1",
@@ -73,7 +70,6 @@
         {
             "class_code": "EECS 482",
             "class_name": "Operating Systems (6 cr.)",
-            "description": "Operating system design and implementation: multi-tasking; concurrency and \n                                                   synchronization; inter-process communication; deadlock; scheduling; resource \n                                                   allocation; memory and storage management; input-output; file systems; protection \n                                                   and security. Students write several substantial programs dealing with concurrency \n                                                   and synchronization in a multi-task environment, with file systems, and with memory \n                                                   management.",
             "projects": [
                 {
                     "project_id": "482-1",
@@ -108,7 +104,6 @@
         {
             "class_code": "EECS 370",
             "class_name": "Computer Organization",
-            "description": "Basic concepts of computer organization and hardware. Instructions executed by a \n                                               processor and how to use these instructions in simple assembly-language programs. \n                                               Stored-program concept. Data-path and control for multiple implementations of a \n                                               processor. Performance evaluation, pipelining, caches, virtual memory, \n                                               input/output.",
             "projects": [
                 {
                     "project_id": "370-1",
@@ -143,7 +138,6 @@
         {
             "class_code": "EECS 281",
             "class_name": "Data Structures & Algorithms",
-            "description": "Introduction to the algorithm analysis and O-notation; Fundamental data \n                                                      structures including lists, stacks, queues, priority queues, hash tables, \n                                                      binary trees, search trees, balanced, trees, and graphs; searching and \n                                                      sorting algorithms; recursive algorithms; basic graph algorithms; introduction \n                                                      to greedy algorithms and divide and conquer strategy. Several programming \n                                                      assignments.",
             "projects": [
                 {
                     "project_id": "281-1",
@@ -178,7 +172,6 @@
         {
             "class_code": "EECS 280",
             "class_name": "Programming & Data Structures",
-            "description": "Algorithm development and effective programming, top-down analysis, \n                                                       structured programming, testing, and program correctness. Program \n                                                       language syntax and static and runtime semantics. Scope, procedure \n                                                       instantiation, recursion, abstract data types, and parameter passing \n                                                       methods. Structured data types, pointers, linked data structures, \n                                                       stacks, queues, arrays, records, and trees.",
             "projects": [
                 {
                     "project_id": "280-1",
