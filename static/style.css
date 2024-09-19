@@ -8,7 +8,6 @@ body {
 .classes-container {
     max-width: 1200px;         /* Set a max-width to ensure enough space */
     margin: 0 auto;           /* Center the container */
-    margin-top: 350px;
     padding: 0 20px;          /* Optional: add some padding to the sides */
     display: grid;            /* Enable grid layout */
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
