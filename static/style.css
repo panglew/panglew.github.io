@@ -4,6 +4,23 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+a {
+    color: #2dbeef;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #2dbeef;
+}
+
+a:hover {
+    color: #1a8cd8;
+}
+
+hr {
+    border-color: #444444;
+}
+
 /* Container to center the content and limit the width */
 .classes-container {
     max-width: 1200px;         /* Set a max-width to ensure enough space */
@@ -42,12 +59,16 @@ body {
 
 /* Project link styling */
 .project a {
-    color: #bb86fc;
+    color: #2dbeef;
     text-decoration: none;
 }
 
+.project a:visited {
+    color: #2dbeef;
+}
+
 .project a:hover {
-    color: #ffffff;
+    color: #1a8cd8;
 }
 
 /* Dark mode styles */
@@ -61,19 +82,6 @@ header,
 nav {
     background-color: #1f1f1f;
     border-bottom: 1px solid #444444;
-}
-
-a {
-    color: #bb86fc;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #ffffff;
-}
-
-hr {
-    border-color: #444444;
 }
 
 /* Navbar Styles */
