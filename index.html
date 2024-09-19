@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="dark-mode">
 
     <div class="navbar">
-        <a href="{{ url_for('show_index') }}" id="homeLink" class="nav-link">Home</a>
-        <a href="{{ url_for('show_about') }}" id="aboutLink" class="nav-link">About</a>
-        <a href="{{ url_for('static', filename='/views/projects.html') }}" id="projectsLink" class="nav-link">Projects</a>
-        <a href="{{ url_for('show_fragrances') }}" id="fragrancesLink" class="nav-link">Fragrances</a>
-        <a href="/contact/" id="contactLink" class="nav-link">Contact</a>
+        <a href="index.html" id="homeLink" class="nav-link">Home</a>
+        <a href="about.html" id="aboutLink" class="nav-link">About</a>
+        <a href="projects.html" id="projectsLink" class="nav-link">Projects</a>
+        <a href="fragrances.html" id="fragrancesLink" class="nav-link">Fragrances</a>
+        <a href="contact.html" id="contactLink" class="nav-link">Contact</a>
     </div>
 
     <div class="content">
