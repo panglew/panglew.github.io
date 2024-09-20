@@ -7,14 +7,20 @@
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="dark-mode">
+
+<body class>
 
     <div class="navbar">
-        <a href="/index.html" id="homeLink" class="nav-link">Home</a>
-        <a href="/about.html" id="aboutLink" class="nav-link">About</a>
-        <a href="/projects.html" id="projectsLink" class="nav-link">Projects</a>
-        <a href="/fragrances.html" id="fragrancesLink" class="nav-link">Fragrances</a>
-        <a href="/contact.html" id="contactLink" class="nav-link">Contact</a>
+        <a href="/" id="homeLink" class="nav-link">Home</a>
+        <a href="/about" id="aboutLink" class="nav-link">About</a>
+        <a href="/all-projects" id="projectsLink" class="nav-link">Projects</a>
+        <a href="/fragrances" id="fragrancesLink" class="nav-link">Fragrances</a>
+        <a href="/contact" id="contactLink" class="nav-link">Contact</a>
+
+        <div class="toggle-container" style="margin-bottom: 30px">
+            <input type="checkbox" id="toggleMode" class="toggle-switch">
+            <label for="toggleMode" class="toggle-label">Dark Mode</label>
+        </div>
     </div>
 
     <div class="content" style="align-items: flex-start;">
