@@ -61,6 +61,10 @@ hr {
     border-color: #444444;
 }
 
+li {
+    margin-bottom: 15px; /* Adjust the value as needed */
+}
+
 /* Slide Toggle Styles */
 .toggle-container {
     margin-top: auto;
