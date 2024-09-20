@@ -1,3 +1,39 @@
+/* Light mode styles */
+body.light-mode {
+    background-color: #ffffff; /* Light background */
+    color: #000000; /* Dark text */
+}
+
+.light-mode .navbar,
+.light-mode header,
+.light-mode nav {
+    background-color: #f0f0f0; /* Light background for navbar */
+    border-bottom: 1px solid #cccccc; /* Lighter border color */
+}
+
+.light-mode .cl-box,
+.light-mode .education,
+.light-mode .experience {
+    background-color: #f0f0f0; /* Light background for boxes */
+    border: 1px solid #dddddd; /* Light border */
+}
+
+.light-mode .download-button {
+    background-color: #2dbeef; /* Button color in light mode */
+}
+
+.light-mode a {
+    color: #2dbeef; /* Link color in light mode */
+}
+
+.light-mode a:hover {
+    color: #1a8cd8; /* Hover color for links in light mode */
+}
+
+.light-mode .toggle-label {
+    color: #000000;
+}
+
 /* General Styles */
 body {
     margin: 0;
