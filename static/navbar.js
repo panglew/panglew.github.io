@@ -28,5 +28,17 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Light mode activated");
         }
     });
+
+    // Add active class to the current link
+    const currentLocation = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentLocation) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
 });
 

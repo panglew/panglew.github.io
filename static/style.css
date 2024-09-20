@@ -159,9 +159,9 @@ nav {
 }
 
 .nav-link.active {
-    background-color: #2dbeef;
-    color: white; /* Ensure the text is white */
-    border-radius: 25px; /* Make the active state rounded */
+    background-color: #2dbeef !important; /* Force the active background color */
+    color: white !important; /* Force the active text color */
+    border-radius: 25px;
     font-weight: bold;
 }
 
