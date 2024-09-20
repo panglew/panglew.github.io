@@ -21,6 +21,53 @@ hr {
     border-color: #444444;
 }
 
+/* Slide Toggle Styles */
+.toggle-container {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.toggle-label {
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    appearance: none;
+    background-color: #575757;
+    outline: none;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+}
+
+.toggle-switch:checked {
+    background-color: #2dbeef;
+}
+
+.toggle-switch::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.toggle-switch:checked::before {
+    transform: translateX(25px);
+}
+
 /* Container to center the content and limit the width */
 .classes-container {
     max-width: 1200px;         /* Set a max-width to ensure enough space */
@@ -90,7 +137,7 @@ nav {
     top: 0;
     left: 0;
     height: 100%;
-    width: 200px; /* Increased to match content margin */
+    width: 200px;
     background-color: #333;
     display: flex;
     flex-direction: column;
@@ -102,6 +149,8 @@ nav {
     text-decoration: none;
     padding: 10px 0;
     width: 100%;
+    text-align: center;
+    border-radius: 25px; /* Added to make the hover state rounded */
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -111,7 +160,9 @@ nav {
 
 .nav-link.active {
     background-color: #2dbeef;
-    color: #333;
+    color: white; /* Ensure the text is white */
+    border-radius: 25px; /* Make the active state rounded */
+    font-weight: bold;
 }
 
 /* Ensure the content container takes up the full height of the viewport */
