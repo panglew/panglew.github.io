@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This Website!</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class>
+
+    <div class="navbar">
+        <a href="/" id="homeLink" class="nav-link">Home</a>
+        <a href="/about" id="aboutLink" class="nav-link">About</a>
+        <a href="/all-projects" id="projectsLink" class="nav-link">Projects</a>
+        <a href="/fragrances" id="fragrancesLink" class="nav-link">Fragrances</a>
+        <a href="/contact" id="contactLink" class="nav-link">Contact</a>
+
+        <div class="toggle-container" style="margin-bottom: 30px">
+            <input type="checkbox" id="toggleMode" class="toggle-switch">
+            <label for="toggleMode" class="toggle-label">Dark Mode</label>
+        </div>
+    </div>
+
+    <div class="content" style="align-items: flex-start;">
+        <section>
+            
+            <h1> This Website </h1>
+            <h4> Languages & Tools Used: Python, JSON, HTML5, CSS, JavaScript</h4>
+            <hr>
+            <ul> 
+                <li> 
+                    This website was originally made to be a dynamic website with Flask,
+                    allowing for me to update the page without having to re-deploy the website
+                    whenever I want to update any of the pages.
+                </li>
+                <li>
+                    Closer to deployment, I found out that GitHub pages does not support Flask apps. After building 90%
+                    of the website, I had to make it static instead.
+                </li>
+                <li>
+                    To achieve this, I utilized my skills from my Web Systems course and developed a
+                    Python program that would render pages for me using Jinja2, given a template and a JSON file.
+                    This JSON file contained all the data from my previous SQLite3 database that
+                    was going to be used for the dynamic version of this website.
+                </li>
+                <li>
+                    The result is this website you are currently viewing!
+                </li>
+            </ul>
+
+        </section>
+    </div>
+
+    <script src="/static/navbar.js"></script>
+</body>
+</html>
