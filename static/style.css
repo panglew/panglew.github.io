@@ -30,6 +30,10 @@ body.light-mode {
     color: #1a8cd8; /* Hover color for links in light mode */
 }
 
+.light-mode a:visited {
+    color: #2dbeef; /* Link color in light mode */
+}
+
 .light-mode .toggle-label {
     color: #000000;
 }
