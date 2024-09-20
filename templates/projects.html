@@ -11,11 +11,11 @@
 <body class="dark-mode">
 
     <div class="navbar">
-        <a href="/index.html" id="homeLink" class="nav-link">Home</a>
-        <a href="/about.html" id="aboutLink" class="nav-link">About</a>
-        <a href="/all-projects.html" id="projectsLink" class="nav-link">Projects</a>
-        <a href="/fragrances.html" id="fragrancesLink" class="nav-link">Fragrances</a>
-        <a href="/contact.html" id="contactLink" class="nav-link">Contact</a>
+        <a href="/index" id="homeLink" class="nav-link">Home</a>
+        <a href="/about" id="aboutLink" class="nav-link">About</a>
+        <a href="/all-projects" id="projectsLink" class="nav-link">Projects</a>
+        <a href="/fragrances" id="fragrancesLink" class="nav-link">Fragrances</a>
+        <a href="/contact" id="contactLink" class="nav-link">Contact</a>
 
         <div class="toggle-container" style="margin-bottom: 30px">
             <input type="checkbox" id="toggleMode" class="toggle-switch">
@@ -43,7 +43,7 @@
                     <div class="projects-container">
                         {% for project in cl.projects %}
                         <div class="project">
-                            <a href="/projects/{{ project.project_id }}.html">{{ project.project_name }}</a>
+                            <a href="/projects/{{ project.project_id }}">{{ project.project_name }}</a>
                         </div>
                         {% endfor %}
                     </div>
