@@ -7,32 +7,6 @@
     <title>EECS 494: Project 2</title>
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Additional CSS for better canvas handling */
-        #unity-container {
-            display: none;
-            position: relative;
-            width: 960px; /* Adjust based on your canvas width */
-            height: 540px; /* Adjust based on your canvas height */
-            margin: auto; /* Center the canvas in the viewport */
-            background-color: black; /* Fallback background color */
-        }
-        #unity-canvas {
-            width: 100%; /* Ensure it scales with the container */
-            height: 100%; /* Ensure it scales with the container */
-        }
-        #unity-loading-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.7); /* Dark background for loading bar */
-        }
-    </style>
 </head>
 
 <body>
@@ -53,7 +27,7 @@
     <div class="content" style="align-items: flex-start;">
         <section>
             
-            <h1> EECS 494: Project 2 - Your Game Title</h1>
+            <h1> EECS 494: Project 2 - Rapid Development</h1>
             <h4> Languages & Tools Used: C#, Unity, GitHub, JIRA</h4>
             <hr>
             <ul> 
@@ -72,93 +46,21 @@
                 </li>
             </ul>
 
-            <!-- Start Game Button -->
-            <button class="download-button" onclick="startUnityGame()">Start Game</button>
+            <a href="/ProjectSources/RapidDev/macOS.zip" class="download-button" download style="color: white;">Download macOS</a>
+            <a href="/ProjectSources/RapidDev/windows.zip" class="download-button" download style="color: white;">Download Windows</a>
+
             <hr>
 
-            <!-- Unity Game Embedding -->
-            <div id="unity-container">
-                <canvas id="unity-canvas" width="960" height="540" tabindex="-1"></canvas>
-                <div id="unity-loading-bar">
-                  <div id="unity-logo"></div>
-                  <div id="unity-progress-bar-empty">
-                    <div id="unity-progress-bar-full"></div>
-                  </div>
-                </div>
-                <div id="unity-warning"></div>
-                <div id="unity-footer">
-                  <div id="unity-webgl-logo"></div>
-                  <div id="unity-fullscreen-button"></div>
-                  <div id="unity-build-title">Project 2</div>
-                </div>
-              </div>
+            <strong> Credits for assests: </strong>
+            <a href="https://assetstore.unity.com/packages/3d/characters/creatures/cursed-priest-horror-character-167606"> Enemy Model (Made by Serhat Yucekaya)</a>
+            <a href="https://assetstore.unity.com/packages/3d/characters/humanoids/sci-fi/free-test-character-asuna-205897#reviews"> Player Model (Made by MSGDI)</a>
+            <a href="https://pngtree.com/freepng/white-hot-smoke-fog-cloud-for-food_8533933.html"> Fog (Made by ameraltaf)</a>
+            <a href="https://tools.wwwtyro.net/space-3d/index.html#animationSpeed=1&fov=80&nebulae=true&pointStars=true&resolution=1024&seed=5buxrstpyt40&stars=true&sun=true"> Sky</a>
+            <a href="ambientCG.com/a/Concrete044B"> Tower Roof </a>
+            <a href="ambientCG.com/a/Facade008"> Tower Body </a>
 
         </section>
     </div>
-
     <script src="/static/navbar.js"></script>
-    
-    <!-- Unity Game Script -->
-    <script>
-        var container = document.querySelector("#unity-container");
-        var canvas = document.querySelector("#unity-canvas");
-        var loadingBar = document.querySelector("#unity-loading-bar");
-        var progressBarFull = document.querySelector("#unity-progress-bar-full");
-        var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-        var warningBanner = document.querySelector("#unity-warning");
-
-        function unityShowBanner(msg, type) {
-            function updateBannerVisibility() {
-                warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-            }
-            var div = document.createElement('div');
-            div.innerHTML = msg;
-            warningBanner.appendChild(div);
-            if (type === 'error') div.style = 'background: red; padding: 10px;';
-            else {
-                if (type === 'warning') div.style = 'background: yellow; padding: 10px;';
-                setTimeout(function() {
-                    warningBanner.removeChild(div);
-                    updateBannerVisibility();
-                }, 5000);
-            }
-            updateBannerVisibility();
-        }
-
-        var buildUrl = "/ProjectSources/RapidDev/Build"; 
-        var loaderUrl = buildUrl + "/p2_gold_webGL.loader.js";
-        var config = {
-            dataUrl: buildUrl + "/p2_gold_webGL.data",
-            frameworkUrl: buildUrl + "/p2_gold_webGL.framework.js",
-            codeUrl: buildUrl + "/p2_gold_webGL.wasm",
-            streamingAssetsUrl: "StreamingAssets",
-            companyName: "eecs494",
-            productName: "Project 2",
-            productVersion: "1.0",
-            showBanner: unityShowBanner,
-        };
-
-        function startUnityGame() {
-            container.style.display = "block"; // Show the Unity game container
-            loadingBar.style.display = "block"; // Show the loading bar
-
-            var script = document.createElement("script");
-            script.src = loaderUrl;
-            script.onload = () => {
-                createUnityInstance(canvas, config, (progress) => {
-                    progressBarFull.style.width = 100 * progress + "%";
-                }).then((unityInstance) => {
-                    loadingBar.style.display = "none";
-                    fullscreenButton.onclick = () => {
-                        unityInstance.SetFullscreen(1);
-                    };
-                }).catch((message) => {
-                    alert(message);
-                });
-            };
-
-            document.body.appendChild(script);
-        }
-    </script>
 </body>
 </html>
