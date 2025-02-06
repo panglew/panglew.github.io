@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pipeline</title>
+    <title>MapReduce</title>
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -26,11 +26,13 @@
     <div class="content" style="align-items: flex-start;">
         <section>
             
-            <h1> EECS 370: P3 - Pipelined Datapath Simulator </h1>
-            <h4> Languages & Tools Used: C, LC2K</h4>
+            <h1> EECS 491: P1 - MapReduce </h1>
+            <h4> Languages & Tools Used: Go</h4>
             <hr>
             <ul> 
-                <li> To be changed. </li>
+                <li> Developed a simplified MapReduce library in Go, implementing Map and Reduce functions to efficiently process and count word frequencies in large text files. </li>
+                <li> Built a distributed MapReduce Manager to assign tasks to multiple workers using RPC, ensuring parallel processing across the system. </li>
+                <li> Designed and integrated a "dynamic channel" utilizing confinement to prevent deadlocks and facilitate safe job reassignments in case of worker or network failures. </li>
             </ul>
 
         </section>
