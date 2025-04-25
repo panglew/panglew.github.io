@@ -30,7 +30,12 @@
             <h4> Languages & Tools Used: Go</h4>
             <hr>
             <ul> 
-                <li> No Desc Yet. </li>
+                <li> Designed and implemented a fault-tolerant, sharded key/value storage system in Go, ensuring linearizable consistency across distributed replica groups </li>
+                <li> Integrated Paxos-based consensus within each replica group to replicate data and handle dynamic reconfiguration reliably </li>
+                <li> Developed a centralized Shard Master service (also Paxos-backed) to manage shard-to-group assignments via configurable Join, Leave, Move, and Query RPCs </li>
+                <li> Engineered a reconfiguration protocol to transfer shards between replica groups while preserving consistency during concurrent client operations </li>
+                <li> Enabled shard handoffs using custom RPCs (AssignShard, PullShard), coordinating safe data migration and duplicate request handling across configurations </li>
+                <li> Achieved fault tolerance under partial network partitions and server failures, ensuring availability and correctness of Get, Put, and Append operations </li>
             </ul>
 
         </section>
