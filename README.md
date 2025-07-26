@@ -1,1 +1,1 @@
-# panglew.github.io
+Host repository for personal website. Built using NextJS and GSAP.
