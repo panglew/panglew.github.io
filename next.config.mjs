@@ -5,7 +5,7 @@ import remarkMath from "remark-math";
 import remarkToc from "remark-toc";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
-import rehypeStarryNight from "rehype-starry-night";
+import rehypeHighlight from "rehype-highlight";
 import NextBundleAnalyzer from "@next/bundle-analyzer";
 
 /** @type {import('next').NextConfig} */
@@ -39,7 +39,7 @@ const withMDX = createMDX({
       remarkMath,
       remarkTocWithOptions,
     ],
-    rehypePlugins: [rehypeKatex, rehypeSlug, rehypeStarryNight],
+    rehypePlugins: [rehypeKatex, rehypeSlug, rehypeHighlight],
   },
 });
 
