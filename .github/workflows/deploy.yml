@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages (Custom Domain)
 on:
   push:
     branches:
-      - static-website  # or your source branch
+      - static-website
 
 permissions:
   contents: write
@@ -24,10 +24,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build and export
+      - name: Build
         run: |
           npm run build
-          npm run export
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
