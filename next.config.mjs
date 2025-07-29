@@ -18,6 +18,8 @@ const nextConfig = {
   },
 };
 
+module.config = nextConfig
+
 function remarkMdxFrontmatterWithOptions() {
   return remarkMdxFrontmatter({
     name: "metadata",
