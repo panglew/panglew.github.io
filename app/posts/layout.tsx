@@ -3,8 +3,8 @@ import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Posts",
-  description: "All Blog Posts by Sachchit Kunichetty",
-  authors: [{ name: "Sachchit Kunichetty", url: "https://skunichetty.dev" }],
+  description: "All Posts by Weston Pangle",
+  authors: [{ name: "Weston Pangle", url: "https://panglew.github.io" }],
 };
 
 const inter = Inter({ subsets: ["latin"] });

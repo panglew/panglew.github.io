@@ -10,9 +10,7 @@ export default async function Page({ params }: DynamicPageParams) {
 
 export function generateStaticParams() {
   return [
-    { slug: "erm-p1" },
-    { slug: "lambda-deployment" },
-    { slug: "logistic-regression" },
+    { slug: "pick-it-up" },
   ];
 }
 

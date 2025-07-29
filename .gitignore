@@ -3,6 +3,8 @@
 # dependencies
 *.node
 node_modules/
+.examples
+examples
 /node_modules
 /.pnp
 .pnp.*
