@@ -58,7 +58,7 @@ export default function Home() {
             </div>
             <br></br>
 
-            <b>Founding Software Engineer | <a href="./posts/pick-it-up">Driver's Seat Studios</a></b>
+            <b>Founding Software Engineer | <a href="/posts/pick-it-up">Driver's Seat Studios</a></b>
             <div className="md:text-sm text-xs text-gray-600 dark:text-gray-400">
               <div className="flex flex-row justify-between">
                 <p>Oct 2024 - Current</p>

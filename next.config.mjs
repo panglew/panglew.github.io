@@ -5,20 +5,17 @@ import remarkMath from "remark-math";
 import remarkToc from "remark-toc";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
-import rehypeStarryNight from "rehype-starry-night";
+/** import rehypeStarryNight from "rehype-starry-night"; */
 import NextBundleAnalyzer from "@next/bundle-analyzer";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   output: 'export',
-  trailingSlash: true,
   experimental: {
     optimizePackageImports: ["katex"],
   },
 };
-
-module.config = nextConfig
 
 function remarkMdxFrontmatterWithOptions() {
   return remarkMdxFrontmatter({
@@ -42,7 +39,7 @@ const withMDX = createMDX({
       remarkMath,
       remarkTocWithOptions,
     ],
-    rehypePlugins: [rehypeKatex, rehypeSlug, rehypeStarryNight],
+    rehypePlugins: [rehypeKatex, rehypeSlug],
   },
 });
 
