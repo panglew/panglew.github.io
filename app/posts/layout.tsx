@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 export const metadata: Metadata = {
   title: "Posts",
   description: "All Posts by Weston Pangle",
-  authors: [{ name: "Weston Pangle", url: "https://panglew.github.io" }],
+  authors: [{ name: "Weston Pangle", url: "https://panglew.dev" }],
 };
 
 const inter = Inter({ subsets: ["latin"] });

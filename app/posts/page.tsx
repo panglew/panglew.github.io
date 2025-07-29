@@ -83,14 +83,14 @@ function BlogPostLd({ posts }: { posts: PostMetadata[] }) {
         __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Blog",
-          url: "https://panglew.github.io/posts",
-          name: "panglew.github.io",
+          url: "https://panglew.dev/posts",
+          name: "panglew.dev",
           description: "All Posts by Weston Pangle",
           blogPost: posts.map((post) => {
             return {
               "@type": "BlogPosting",
               headline: post.title,
-              url: `https://panglew.github.io/posts/${post.slug}`,
+              url: `https://panglew.dev/posts/${post.slug}`,
               datePublished: post.date.toISOString(),
               dateModified: post.editDate?.toISOString(),
               description: post.description,
