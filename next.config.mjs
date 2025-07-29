@@ -11,10 +11,14 @@ import NextBundleAnalyzer from "@next/bundle-analyzer";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  output: 'export',
+  trailingSlash: true,
   experimental: {
     optimizePackageImports: ["katex"],
   },
 };
+
+module.exports = nextConfig;
 
 function remarkMdxFrontmatterWithOptions() {
   return remarkMdxFrontmatter({
