@@ -19,7 +19,7 @@ export function Logo() {
       href="/"
       className="sm:text-xl text-md font-bold text-pretty hover:text-blue-500 transition"
     >
-      skunichetty.dev
+      panglew.github.io
     </Link>
   );
 }

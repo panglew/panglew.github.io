@@ -8,17 +8,12 @@ export default function Footer() {
       <div className="flex flex-row justify-center items-center gap-2">
         <SocialMediaLink
           type="linkedin"
-          link="https://www.linkedin.com/in/sachchit-kunichetty/"
+          link="https://www.linkedin.com/in/panglew/"
         />
-        <SocialMediaLink type="envelope" link="mailto:sachchitku@gmail.com" />
-        <SocialMediaLink type="github" link="https://github.com/skunichetty" />
+        <SocialMediaLink type="envelope" link="mailto:pangle.weston@gmail.com" />
+        <SocialMediaLink type="github" link="https://github.com/panglew" />
+        <p style={{ display: 'none' }}>Credit to Sachchit Kunichetty for allowing me to recreate his site template.</p>
       </div>
-      <Link
-        href="https://github.com/skunichetty/website"
-        className="hover:text-blue-500 transition px-2"
-      >
-        <Icon name="code" />
-      </Link>
     </footer>
   );
 }

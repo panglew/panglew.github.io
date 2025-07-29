@@ -57,11 +57,11 @@ export default function Location() {
     >
       <div className="flex flex-row items-center gap-1">
         <Icon name="location" />
-        <h1>Chicago, IL, US</h1>
+        <h1>Ann Arbor, MI, US</h1>
       </div>
       <div className="flex flex-row items-center gap-1">
         <Icon name="time" />
-        <Clock locale="en-US" timezone="America/Chicago" />
+        <Clock locale="en-US" timezone="America/Detroit" />
       </div>
     </div>
   );

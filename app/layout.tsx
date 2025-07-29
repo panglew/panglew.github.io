@@ -11,13 +11,13 @@ const inter_tight = Inter_Tight({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | skunichetty.dev",
-    default: "skunichetty.dev",
+    template: "%s | panglew.github.io",
+    default: "panglew.github.io",
   },
-  description: "Sachchit Kunichetty's Personal Website",
+  description: "Weston Pangle's Personal Website",
   openGraph: {
     type: "website",
-    siteName: "skunichetty.dev",
+    siteName: "panglew.github.io",
     locale: "en_US",
   },
   robots: {
