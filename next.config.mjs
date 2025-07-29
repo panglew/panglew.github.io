@@ -8,6 +8,8 @@ import rehypeSlug from "rehype-slug";
 import rehypeHighlight from "rehype-highlight";
 import NextBundleAnalyzer from "@next/bundle-analyzer";
 
+process.on('uncaughtException', console.error);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
