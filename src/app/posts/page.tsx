@@ -1,8 +1,8 @@
 import { readFile, readdir } from "fs/promises";
 import path from "path";
 import Link from "next/link";
-import { dateComparator } from "@/src/app/utils";
-import { PostMetadata } from "@/src/components/client/post";
+import { dateComparator } from "@/app/utils";
+import { PostMetadata } from "@/components/client/post";
 import matter from "gray-matter";
 
 interface RawPostMetadata {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { dateComparator } from "@/src/app/utils";
+import { dateComparator } from "@/app/utils";
 
 interface RawExperienceItemProps {
   id: number;

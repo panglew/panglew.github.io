@@ -1,7 +1,7 @@
-import Dropdown from "@/src/components/client/dropdown";
-import ExperienceList from "@/src/components/server/experience_list";
-import Location from "@/src/components/client/location";
-import Hero from "@/src/components/client/hero";
+import Dropdown from "@/components/client/dropdown";
+import ExperienceList from "@/components/server/experience_list";
+import Location from "@/components/client/location";
+import Hero from "@/components/client/hero";
 
 interface LineWithHeadingProps {
   heading: string;

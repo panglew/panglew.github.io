@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
-import Link from "@/src/node_modules/next/link";
-import Image from "@/src/node_modules/next/image";
+import Link from "@/node_modules/next/link";
+import Image from "@/node_modules/next/image";
 import {
   PostHeader,
   Callout,
@@ -9,7 +9,7 @@ import {
   Definition,
   ImageWithCaption,
   PostHero,
-} from "@/src/components/client/post";
+} from "@/components/client/post";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

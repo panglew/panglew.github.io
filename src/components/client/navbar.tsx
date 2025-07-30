@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-import Icon from "@/src/components/server/icon";
+import Icon from "@/components/server/icon";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { NavbarProps, Logo, DesktopNavbarItem } from "../server/navbar_static";
