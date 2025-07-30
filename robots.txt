@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://panglew.github.io/sitemap.xml
