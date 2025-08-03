@@ -120,6 +120,8 @@ export default function Home() {
               </div>
               <p className="text-gray-600 dark:text-gray-400">
                 <br></br>
+                <b>Tools & Technologies:</b> AWS, C/C++, C#, CSS, Docker, Flask, Git, GitHub, GitLab, Go, HTML, Java, JavaScript, JIRA, Python, Rust, Unity
+                <br></br>
                 <b>Coursework:</b> Data Structures & Algorithms, Computer Organization, Theory of Computation, Computer Security, Software Engineering, Advanced Operating Systems, Database Management Systems, Web Systems, Computer Networks, Distributed Systems, Computer Game Design & Development, Machine Learning Basics
               </p>
             </div>

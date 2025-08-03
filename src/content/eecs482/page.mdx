@@ -3,7 +3,122 @@ title: "Projects for Advanced Operating Systems"
 date: 5/28/2024
 slug: eecs482
 keywords: [Game Development, Video Game]
-description: No content yet, Project Descriptions for EECS482, Advanced Operating Systems.
+description: Summary & Project Descriptions for EECS482, Advanced Operating Systems. Technologies used include Git, GitHub, C/C++, Boost Threads
 ---
 
 <PostHeader title={metadata.title} date={new Date(metadata.date)}/>
+
+### Advanced Operating Systems (EECS 482 + EECS 498-02)
+
+An upper-level course covering fundamental and advanced concepts in operating system design and implementation. Key topics include multitasking, concurrency and synchronization, inter-process communication, deadlock detection and prevention, CPU scheduling, resource allocation, memory and storage management, file systems, and system protection and security.
+
+### Key Skills & Experience:
+- Developed concurrency control mechanisms and synchronization primitives to manage multi-threaded processes safely and efficiently.
+- Implemented a **disk scheduler** to optimize I/O performance by ordering read/write requests.
+- Built a custom **thread library** to support lightweight user-level threading and context switching.
+- Designed and implemented a **pager** for virtual memory management, including page replacement algorithms and handling page faults.
+- Created a **network file system** supporting remote file access with consistency and fault tolerance considerations.
+- Applied resource allocation and deadlock avoidance techniques in multitasking environments.
+- Worked extensively with kernel-level programming concepts, including interrupt handling and process scheduling.
+
+This course strengthened my systems programming skills and deepened my understanding of OS internals, preparing me to build and optimize complex, concurrent software systems.
+
+---
+
+## Projects
+
+- [Project 1: Disk Scheduler](#project-1)
+- [Project 2: Multi-Core Thread Library](#project-2)
+- [Project 3: Virtual Memory Pager](#project-3)
+- [Project 4: Multi-Threaded Network File System](#project-4)
+
+### <span id="project-1">Project 1: <i>Disk Scheduler</i></span>
+
+Developed a **multi-threaded disk scheduling program** in C++ to simulate core operating system disk management and I/O optimization. This project modeled concurrent request handling and disk head movement strategies, mirroring real-world OS functionality.
+
+### Key Skills & Experience
+
+- **Concurrency & Thread Synchronization:**
+  - Designed **servicer** and **requester** threads coordinating via **mutexes** and **condition variables** to safely manage concurrent disk I/O requests.
+  - Ensured correct sequencing and resource sharing in a multi-threaded environment to avoid race conditions and deadlocks.
+
+- **Disk Scheduling Algorithm:**
+  - Implemented the **Shortest Seek Time First (SSTF)** algorithm, optimizing disk head movement to minimize seek time and improve throughput.
+
+- **Systems Programming & Performance Optimization:**
+  - Gained practical experience with low-level threading APIs, synchronization primitives, and performance trade-offs in I/O scheduling.
+  - Developed insights into real-world OS resource management, enhancing understanding of multi-tasking and hardware interaction.
+
+This project deepened my skills in **concurrent systems programming**, **algorithm implementation**, and **operating system internals**, laying a foundation for building efficient, thread-safe software.
+
+---
+
+### <span id="project-2">Project 2: <i>Multi-Core Thread Library</i></span>
+
+Designed and built a **complete multi-threading library in C++** to support efficient thread creation, scheduling, and synchronization on multi-CPU systems. This project emulated low-level operating system behavior and provided full concurrency support for user-level programs.
+
+### Key Skills & Experience
+
+- **Core Concurrency Primitives:**
+  - Implemented `Thread`, `Mutex`, and `ConditionVariable` classes, along with essential methods, enabling fine-grained control over synchronization and cooperative multitasking.
+
+- **Context Switching & Scheduling:**
+  - Engineered **user-level context switching** and **CPU scheduling** logic to simulate parallel thread execution across multiple cores.
+
+- **Concurrency & Synchronization:**
+  - Ensured safe concurrent execution using **mutexes** and **condition variables**, preventing race conditions and deadlocks.
+  - Verified multi-core functionality through comprehensive testing with parallel threads.
+
+- **Systems-Level Programming:**
+  - Gained hands-on experience replicating the behavior of kernel-level threading systems.
+  - Strengthened knowledge of **thread lifecycles**, **preemptive vs. cooperative scheduling**, and low-level synchronization mechanisms.
+
+This project significantly enhanced my understanding of **operating system concurrency models**, deepened my systems programming skills, and demonstrated my ability to build complex, reliable infrastructure software from scratch.
+
+---
+
+### <span id="project-3">Project 3: <i>Virtual Memory Pager</i></span>
+
+Implemented a **virtual memory management pager** for an OS simulation in C++, supporting process creation, memory mapping, and efficient page handling through advanced memory management techniques.
+
+### Key Skills & Experience
+
+- **Copy-on-Write Semantics:**
+  - Managed memory duplication during process creation using **copy-on-write**, optimizing memory usage and deferring physical copying until a write occurs.
+
+- **Memory Mapping & Backing:**
+  - Built a `vm_map` function to allocate memory regions backed by **swap space** or shared **read-only file mappings**.
+  - Integrated **eager swap reservation** to ensure page availability and system stability.
+
+- **Page Fault Handling:**
+  - Implemented logic to resolve **read and write access violations**, handling **copy-on-write faults**, and loading appropriate backing pages dynamically.
+
+- **Resource Cleanup & Reclamation:**
+  - Designed and executed memory cleanup routines to **reclaim memory** and associated metadata for terminated processes, ensuring long-term system health.
+
+This project deepened my understanding of **virtual memory systems**, including paging, lazy allocation, and memory protection — skills essential for operating system internals and systems programming.
+
+---
+
+### <span id="project-4">Project 4: <i>Multi-Threaded Network File System</i></span>
+
+Designed and implemented a **multithreaded network file system** in C++, supporting **concurrent access**, **directory manipulation**, and **robust thread-safe operations** across multiple clients. The system interfaced seamlessly with both **new and existing file systems**, enabling high-performance file serving in a simulated networked environment.
+
+### Key Skills & Experience
+
+- **Concurrent Client Support:**
+  - Enabled **multiple remote clients** to connect and **simultaneously read/write** files and directories using a multithreaded manager-worker threading model.
+
+- **File & Directory Operations:**
+  - Supported full **read, write, create, and delete** functionality for files and directories, including runtime creation and removal of directory structures.
+
+- **Thread-Safe Access with Upgradeable Locks:**
+  - Used **Boost's upgradeable locks** to allow **parallel read access** while preventing writes during active reads, significantly **improving system throughput and reducing contention**.
+
+- **Filesystem Initialization & Mounting:**
+  - Ensured compatibility with both **new** and **existing file systems**, providing flexible startup behavior and consistent access patterns.
+
+- **Concurrency Control & Performance Testing:**
+  - Implemented strict synchronization using **mutexes and upgradeable locks**, rigorously tested under high concurrency to ensure **data integrity**, **scalability**, and **fault tolerance**.
+
+This project demonstrated my ability to build **scalable, thread-safe infrastructure software**, and deepened my expertise in **multithreading**, **synchronization primitives**, and **file system architecture** in performance-critical environments.

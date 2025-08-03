@@ -1,9 +1,144 @@
 ---
 title: "Projects for Distributed Systems"
-date: 4/28/2025
+date: 5/29/2025
 slug: eecs491
 keywords: [Game Development, Video Game]
-description: No content yet, Project Descriptions for EECS491, Distributed Systems.
+description: Summary & Project Descriptions for EECS491, Distributed Systems. Technologies used include Git, GitHub, Go
 ---
 
 <PostHeader title={metadata.title} date={new Date(metadata.date)}/>
+
+### Distributed Systems (EECS 491)
+
+EECS 491 is an advanced undergraduate course focused on the design and implementation of **scalable, consistent, and fault-tolerant distributed systems**. The course explored the principles and practices that underpin real-world cloud infrastructure and large-scale services.
+
+### Key Skills & Experience:
+- Implemented core distributed algorithms in **Go**, including consensus protocols and replicated data stores.
+- Built a **fault-tolerant key/value store** using **Paxos-based log replication**, supporting crash recovery and network partition tolerance.
+- Designed and developed a **sharded configuration manager**, enabling dynamic rebalancing and horizontal scalability across replica groups.
+- Implemented and tested systems with different **data consistency models**, including **linearizability**, **eventual consistency**, and **causal consistency**.
+- Managed **concurrent request handling**, used **timeout-based failure recovery**, and developed **thread-safe RPC handlers** in networked environments.
+- Analyzed and debugged distributed behavior using event logs and controlled fault injection.
+
+This course significantly deepened my understanding of distributed coordination, reliability under failure, and systems-level programming, while strengthening my ability to build robust infrastructure software in a concurrent, asynchronous environment.
+
+---
+
+## Projects
+
+- [Project 1: MapReduce](#project-1)
+- [Project 2: Primary/Backup KV Store](#project-2)
+- [Project 3: Paxos-based KV Store](#project-3)
+- [Project 4: Sharded KV Store with Shardmaster](#project-4)
+
+### <span id="project-1">Project 1: <i>MapReduce Key/Value Store</i></span>
+
+As an introduction to distributed programming in **Go**, I implemented a simplified version of the **MapReduce** programming model—mirroring many ideas from the original MapReduce paper but adapted for a smaller, educational-scale system.
+
+#### Key Contributions:
+- Developed a **MapReduce library** in Go, beginning with a sequential implementation and extending it to support distributed execution using **RPC-based communication**.
+- Designed the **manager node** to assign map and reduce tasks to worker processes, coordinate job execution, and manage task tracking across rounds.
+- Implemented **fault tolerance** mechanisms to detect and recover from worker failures due to crashes or unreliable network conditions. This included:
+  - Timeout-based failure detection
+  - Task reassignment logic
+  - Safe goroutine cleanup strategies
+- Created both **Map** and **Reduce** function logic, and ensured the entire job pipeline handled intermediate files, key aggregation, and final output writing.
+- Built and tested the system using concurrent workers and varying failure scenarios to verify the robustness and correctness of job completion.
+
+This project strengthened my ability to write **concurrent, networked systems** in Go, and introduced me to foundational concepts in **distributed coordination**, **resilience**, and **parallel computation orchestration**.
+
+---
+
+### <span id="project-2">Project 2: <i>Primary/Backup Key-Value Store with Viewservice</i></span>
+
+Built a fault-tolerant, replicated **key/value store** in Go using a **primary/backup model** coordinated by a centralized **view service**. This project emphasized managing server roles, ensuring consistency across failures, and maintaining correctness during network partitions and crashes.
+
+#### Key Skills & Experience:
+- **Primary/Backup Replication:**  
+  Developed a key/value store where only the active primary handles client requests. The primary forwards all state-changing operations to the backup to ensure consistency and avoid divergence.
+  
+- **View Service Coordination:**  
+  Implemented a central *view service* to track server liveness and orchestrate view changes. The view service ensured a single primary and (when possible) a backup were always designated.  
+  The system:
+  - Detected server failures based on missed pings.
+  - Promoted backups and recruited idle servers to maintain fault tolerance.
+  - Enforced **view acknowledgment rules** to prevent split-brain behavior.
+  
+- **State Synchronization & Handoff:**  
+  Engineered logic for:
+  - **Database transfer** from primary to backup on promotion.
+  - Handling **state invalidation** for servers declared unavailable, preventing out-of-date state reuse.
+  - Ensuring the backup remained synchronized through **real-time request forwarding**.
+
+- **At-Most-Once Semantics & Client Resilience:**  
+  Managed duplicate RPCs using **request tracking**, guaranteeing idempotent processing despite client retries. Ensured correctness for `Get`, `Put`, and `Append` under transient network failures and view changes.
+
+- **Concurrency & Failure Handling:**  
+  Leveraged Go's goroutines and timers to coordinate server state, perform regular view checks (`tick()`), and handle async state replication. Implemented robust **error signaling** (`ErrWrongServer`) for non-primary request rejection.
+
+This project deepened my understanding of **server coordination**, **replication under network uncertainty**, and the subtleties of **distributed consistency guarantees** in an asynchronous, failure-prone environment. It served as a bridge between basic fault tolerance and more advanced protocols like **Paxos** and **sharded replication**.
+
+---
+
+### <span id="project-3">Project 3: <i>Paxos-Based Key/Value Store</i></span>
+
+Designed and implemented a fault-tolerant, **linearizable key/value store** by building a replicated state machine powered by the **Paxos consensus algorithm**. This system eliminated the need for a central coordinator by ensuring all replicas agreed on the global order of operations through distributed consensus.
+
+### Key Skills & Experience:
+- **Consensus-Based Replication with Paxos:**  
+  Built a distributed log of operations using one-shot Paxos instances, each responsible for deciding a unique operation (e.g., `Put`, `Append`, `Get`). Ensured all KVPaxos replicas applied the same operations in the same global order for strong consistency.
+
+- **Replicated State Machine (RSM) Architecture:**  
+  Constructed a layered system in Go:
+  - **KVPaxos servers**: handled client RPCs and maintained the key/value store.
+  - **PaxosRSM library**: coordinated ordering of operations and tracked decision states.
+  - **Paxos peers**: handled protocol-specific logic (Prepare, Accept, Decide) via RPCs.
+
+- **Concurrency & Parallelism:**  
+  Supported concurrent Paxos instance execution by running consensus for multiple log slots in parallel. Managed lifecycle and memory reclamation of Paxos instances using `Done()` and `Min()` logic.
+
+- **Recovery and Catch-Up Mechanism:**  
+  Ensured lagging replicas could **reconstruct state** by querying decided Paxos log entries and replaying missed operations in order. Guaranteed **eventual consistency** and state convergence after failures or partitions.
+
+- **Fault Tolerance & At-Most-Once Semantics:**  
+  Implemented request deduplication using unique client-generated identifiers to provide at-most-once execution, even with repeated RPCs. Used Go’s concurrency primitives and `select` statements to gracefully handle shutdowns and asynchronous decision propagation.
+
+- **Linearizability Guarantees:**  
+  Achieved **single-copy semantics** by enforcing total ordering of updates across all replicas, ensuring completed operations were observed in the same order system-wide.
+
+This project deepened my experience with **distributed consensus**, **log replication**, and **state machine coordination**, while significantly advancing my skills in **networked systems programming**, **fault-tolerant design**, and **concurrent logic in Go**.
+
+---
+
+### <span id="project-4">Project 4: <i>Sharded Key/Value Store with Paxos-Based Shardmaster</i></span>
+
+Designed and implemented a **fault-tolerant, sharded key/value storage system** coordinated by a Paxos-replicated **Shardmaster**. This project extended the Paxos-based key/value infrastructure to support **horizontal scalability**, **shard reconfiguration**, and **cross-group coordination**; building on principles found in real-world systems like BigTable, Spanner, and HBase.
+
+### Key Skills & Experience
+
+- **Sharding & Load Distribution:**
+  - Partitioned the keyspace across multiple **replica groups**, each running its own Paxos-based consensus log.
+  - Implemented shard assignment logic in the **Shardmaster**, which generated balanced configurations that minimized shard movement across Join, Leave, and Move operations.
+
+- **Dynamic Reconfiguration Protocols:**
+  - Developed a robust shard handoff protocol:
+    - The new owner group used `PullShard` RPCs to fetch key/value data from the previous group.
+    - Shardmaster signaled reconfigurations via `AssignShard`, and movements were serialized for consistency.
+  - Used Paxos logs to coordinate not only client operations but also shard transfer events, preserving **linearizability during reconfiguration**.
+
+- **Fault-Tolerant Shardmaster via PaxosRSM:**
+  - Built the **Shardmaster** on top of the PaxosRSM library to guarantee consistent configuration state across failures.
+  - Supported configuration lookups via `Query`, with support for both past and current versions.
+
+- **Cross-Group Coordination:**
+  - Ensured that **only one group served any shard** at a time, even during reconfiguration.
+  - Guaranteed that all `Put`, `Append`, and `Get` operations were applied in the correct global order using Paxos and group-level synchronization.
+
+- **Client Interaction & Routing:**
+  - Implemented logic for clients to route requests to the correct replica group based on the current configuration.
+  - Returned `ErrWrongGroup` when a request was directed to the wrong group due to an outdated configuration, prompting the client to retry.
+
+- **Duplicate RPC Detection & Cleanup:**
+  - Tracked and filtered duplicate `Clerk` requests using unique IDs, ensuring **at-most-once semantics** and safe memory reclamation over time.
+
+This project solidified my ability to design and implement **reconfigurable, consistent distributed systems**. It combined core distributed systems concepts: **sharding, leader election, replication, and fault-tolerance**, with **system-level concurrency and RPC-based coordination** in Go.
