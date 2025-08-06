@@ -3,7 +3,119 @@ title: "Projects for Computer Networks"
 date: 12/15/2024
 slug: eecs489
 keywords: [Game Development, Video Game]
-description: No content yet, Project Descriptions for EECS489, Computer Networks.
+description: Summary & Project Descriptions for EECS489, Computer Networks. Projects include Bandwith Measurement Tool, HTTP Proxy w/ DNS, TCP Implementation, and Static Router. Technologies used include C++, Sockets, Mininet, Git, and GitHub.
 ---
 
 <PostHeader title={metadata.title} date={new Date(metadata.date)}/>
+
+## Computer Networks (EECS 489)
+
+In-depth course on computer networking with a top-down approach, covering foundational and advanced concepts across the network stack. Gained strong theoretical understanding and practical skills related to how modern networked applications operate and how data is transmitted over the Internet.
+
+### Key Learning Outcomes:
+
+- Mastery of the layered network model, including data encapsulation and de-encapsulation as information traverses the application, transport, network, and link layers  
+- Measurement and analysis of network performance metrics such as delay, throughput, and round-trip time (RTT), with insight into their dependency on bandwidth and traffic patterns  
+- Understanding of core application layer protocols including HTTP, video streaming, DNS, and content delivery networks (CDNs)  
+- In-depth study of transport layer protocols TCP and UDP, emphasizing flow control, error detection, congestion control, and reliability  
+- Comprehensive knowledge of network layer fundamentals such as IP addressing, routing algorithms (link state, distance vector, BGP), and router operations in packet-switched networks  
+- Familiarity with link layer technologies including Ethernet, Wi-Fi, MAC addressing, and switch functions in LANs  
+- Exposure to cutting-edge networking trends such as software-defined networking (SDN), programmable networks, and data center network architectures  
+
+This course equipped me with both conceptual frameworks and practical experience to understand, analyze, and build efficient networked systems that underpin today’s Internet and cloud infrastructure.
+
+---
+
+## Projects
+
+- [Project 1: Network Measurement Tool](#project-1)
+- [Project 2: Video Streaming HTTP Proxy w/ DNS](#project-2)
+- [Project 3: Reliable Transport Protocol (TCP Implementation)](#project-3)
+- [Project 4: Static Router](#project-4)
+
+### <span id="project-1">Project 1: <i>Network Measurement Tool</i></span>
+
+### Project Overview  
+Developed a TCP-based network measurement tool, **iPerfer**, inspired by iPerf, to estimate throughput between two hosts. The tool operates in two modes:  
+- **Client mode:** Sends TCP packets continuously to a server for a specified time window and calculates the bandwidth based on data sent and elapsed time.  
+- **Server mode:** Receives TCP packets from the client, acknowledges them, and calculates the bandwidth based on data received and elapsed time.  
+
+The project involved implementing precise round-trip time (RTT) estimations and throughput calculations using TCP sockets and system-level timing mechanisms (`std::chrono::high_resolution_clock`). The tool was tested on a virtual network using Mininet to analyze link and path latency and throughput under various traffic conditions.
+
+### Key Contributions  
+- Implemented TCP socket communication for both client and server modes following strict argument validation and error handling, including port and time parameter checks.  
+- Designed an RTT estimation phase by exchanging small 1-byte packets between client and server to accurately measure propagation delays.  
+- Managed throughput measurement by sending/receiving 80KB data chunks, calculating bandwidth in Mbps, and ensuring correct unit conversions for reporting.  
+- Incorporated detailed logging using the `spdlog` library for clear, formatted runtime statistics on data sent/received, transfer rates, and RTT.  
+- Conducted comprehensive experiments using Mininet to measure latency and bandwidth on individual links and across multi-hop paths, analyzing the effects of multiplexing and concurrent traffic on network performance.  
+- Documented findings with predictions, empirical data collection, and explanations of discrepancies in an organized report format.
+
+Through this project, I gained hands-on experience in low-level network programming, mastering TCP socket communication and precise timing for network measurements. I deepened my understanding of how RTT and throughput relate to underlying network properties such as propagation delay and bandwidth. The process of building iPerfer reinforced concepts around reliable data transmission, congestion effects, and measurement challenges in distributed systems. Conducting experiments in a simulated network environment taught me how concurrent flows and multiplexing influence performance, connecting theoretical knowledge with practical observations. Overall, this project enhanced my ability to design, implement, and evaluate network tools critical for diagnosing and optimizing real-world network behavior.
+
+---
+
+### <span id="project-2">Project 2: <i>Video Streaming HTTP Proxy w/ DNS</i></span>
+
+Implemented **miProxy**, a custom HTTP proxy server that enables adaptive video bitrate streaming without modifying the video client. The proxy intercepts browser requests for video content, measures client throughput, and dynamically modifies video segment requests to deliver the highest quality encoding the client's network supports.
+
+#### Load Balancer: DNS-Style Load Balancing Server  
+To distribute video streaming load across replicated video servers, developed a **load balancer** implementing two load balancing strategies inspired by CDN DNS techniques:
+- **Round-Robin:** Cycles through a list of video server IP addresses and ports, assigning the next server in sequence for each client request, looping back when the end of the list is reached.
+- **Geographic Distance-Based:** Returns the closest video server to the client based on client IP and a weighted, undirected network graph representing geographic distances. The load balancer selects the server with the least-cost path to the client, simulating real-world geo-aware DNS load balancing without a full DNS implementation.
+
+### Key Contributions  
+- Developed a scalable TCP proxy server managing multiple concurrent client sockets with select-based polling, ensuring efficient multiplexed I/O.  
+- Implemented robust HTTP 1.1 header parsing and modification, including case-insensitive header handling and support for persistent connections.  
+- Created parsing logic to extract video bitrate representations from manifest files, maintaining bitrate information persistently across client connections.  
+- Engineered per-client throughput measurement and adaptive bitrate selection algorithms that dynamically modify video segment requests to optimize streaming quality.  
+- Enabled transparent forwarding of HTTP requests/responses between clients and video servers with minimal latency overhead.  
+- Integrated miProxy with an external load balancer to assign video servers dynamically per client connection.  
+- Designed and implemented a binary protocol-based load balancer with two load balancing algorithms: round-robin and geographic distance.  
+- Implemented graph traversal and shortest path computation to select the closest video server to clients based on a weighted network topology, mimicking geographic DNS load balancing.  
+- Ensured proper network byte order conversion for multi-byte integer communication between miProxy and load balancer, enforcing protocol correctness.
+
+This project deepened my understanding of core networking concepts including TCP socket programming, multiplexed I/O, HTTP protocol intricacies, and real-world CDN load balancing techniques. Implementing the proxy sharpened my skills in protocol parsing, request transformation, and adaptive streaming algorithms informed by live throughput measurements. Building the load balancer exposed me to distributed system design and efficient network-aware decision making using graph algorithms for geo-aware routing. Working with these interconnected components enhanced my ability to integrate systems, design custom network protocols, and deliver scalable solutions that improve user experience in video streaming. This project also reinforced best practices for network byte order handling, concurrency, and state management across networked services—key competencies for network software engineering roles.
+
+---
+
+### <span id="project-3">Project 3: <i>Reliable Transport Protocol (TCP Implementation)</i></span>
+
+Developed a custom transport protocol named **WTP** to ensure **reliable, in-order delivery** over UDP in the presence of loss, duplication, delay, corruption, and reordering. The system consists of two core components:
+- **wSender:** A reliable data sender that reads a file, segments it into packets, and ensures its delivery via UDP.
+- **wReceiver:** A receiver that validates packet integrity via CRC checksums, stores the file, and sends acknowledgments based on sequence numbers.
+
+The protocol mimics core functionalities of TCP, implementing a **sliding window mechanism**, **ACK handling**, and **timeout-based retransmission** to guarantee reliability.
+
+In the final part of the project, optimized versions of both programs were implemented:
+- **wReceiverOpt:** Sends **individual ACKs** (instead of cumulative), eliminating redundant retransmissions for buffered packets.
+- **wSenderOpt:** Tracks and manages **per-packet timers**, only retransmitting unacknowledged packets upon timeout, reducing bandwidth waste.
+
+### Key Contributions
+
+- **Designed and implemented** a custom reliable transport protocol (WTP) over UDP, including connection setup and teardown (START and END packets).
+- Developed a **sliding window** sender (`wSender`) that supports dynamic window sizing and retransmits packets upon 500ms timeout if no ACK is received.
+- Implemented **cumulative ACKs** in the initial receiver and transitioned to **individual ACKs** for optimization in `wReceiverOpt`.
+- Added **CRC32 checksum validation** to detect and discard corrupted packets, ensuring integrity across unreliable networks.
+- Handled a wide range of network anomalies: out-of-order delivery, duplication, delay, and loss of both data and ACK packets.
+- Built **custom logging** utilities in both sender and receiver, providing detailed tracking of each packet’s metadata: type, sequence number, length, and checksum.
+- Introduced **per-packet timers** in `wSenderOpt` to minimize unnecessary retransmissions by tracking individual packet ACK status.
+- Enabled robust **buffering and reordering logic** in the receiver to reconstruct the original file reliably.
+- Created optimized tools capable of transferring both text and binary files (e.g., videos or images), with correctness verified via replayability.
+
+Through this project, I gained a deeper understanding of how reliable transport protocols like TCP are built on top of unreliable channels such as UDP. I learned how to implement sliding window mechanisms, timeout-based retransmissions, and error detection using checksums. Additionally, I explored the tradeoffs between cumulative and individual acknowledgments, and how protocol optimizations can reduce unnecessary retransmissions and improve performance. This hands-on experience gave me a practical foundation in designing robust, low-level network protocols.
+
+---
+
+### <span id="project-4">Project 4: <i>Static Router</i></span>
+
+Built a fully functioning software router that processes and forwards real Ethernet and IP packets using a static routing table. The router handled packet forwarding, ARP resolution, and ICMP messaging to enable end-to-end delivery of data between application servers and the internet in a real network environment.
+
+**Key Contributions:**
+
+- Implemented core routing functionality by parsing and forwarding raw Ethernet and IP packets based on a static routing table using the longest prefix match algorithm.
+- Developed and maintained an ARP cache to resolve IP-to-MAC address mappings and implemented ARP request queuing with retry logic and timeouts.
+- Generated and responded to ARP packets and implemented logic to unicast appropriate ARP replies from correct interfaces.
+- Handled multiple ICMP message types including Echo Reply, Time Exceeded, Destination Unreachable, and Port Unreachable, adhering strictly to protocol correctness.
+- Ensured packets were forwarded promptly and accurately, avoiding drops except in edge cases like TTL expiration or unresolved next-hop addresses.
+
+Gained hands-on experience implementing a real-world router using core layer 2 and layer 3 networking concepts. Learned how ARP, IP forwarding, and ICMP protocols interact to enable communication, and developed a strong understanding of efficient packet processing, protocol compliance, and debugging raw network traffic.

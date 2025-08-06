@@ -3,7 +3,165 @@ title: "Projects for Web Systems"
 date: 12/15/2023
 slug: eecs485
 keywords: [Game Development, Video Game]
-description: No content yet, Project Descriptions for EECS485, Web Systems.
+description: Summary & Project Descriptions for EECS485, Web Systems. Projects include Static-Site Generator, Instagram Clone, MapReduce, and Search Engine. Technologies used include Python, HTML, CSS, SQLite, AWS, React, Git, and GitHub.
 ---
 
 <PostHeader title={metadata.title} date={new Date(metadata.date)}/>
+
+### Web Systems (EECS 485)
+
+This course provided a comprehensive overview of modern web technologies across the front end, back end, and large-scale distributed systems. Through hands-on projects, I gained experience building full-stack applications and learned how to extract meaningful information from web-scale data. I developed and deployed complex systems, including a photo-sharing social media platform and a search engine, using industry-standard tools and frameworks.
+
+### Key Skills & Experience
+
+- **Frontend Development:** HTML, CSS, JavaScript, React (client-side dynamic pages), asynchronous programming
+- **Backend Development:** Python, Flask (server-side dynamic pages), REST API design, session management, web security
+- **Cloud & Infrastructure:** Amazon Web Services (IaaS, PaaS), deployment automation, Linux system administration, shell scripting
+- **Databases & Storage:** SQL, distributed storage systems, performance trade-offs
+- **Parallel & Distributed Systems:** Sockets, threads, multiprocessing, distributed compute frameworks
+- **Web Semantics & Data Processing:** Text and link analysis, search engine architecture, recommender systems, ads & auctions
+- **Tooling & Collaboration:** Git (version control), debugging, reading and applying developer documentation
+
+This course strengthened my ability to independently learn and apply new web technologies by leveraging official documentation. I now feel confident in designing, building, and deploying scalable, full-stack web applications, as well as processing large-scale web data to extract insights and power search and recommendation features.
+
+---
+
+## Projects
+
+- [Project 1: Static-Site Generator](#project-1)
+- [Projects 2 & 3: Instagram Clone](#project-2-3)
+- [Project 4: MapReduce](#project-4)
+- [Project 5: Search Engine](#project-5)
+
+### <span id="project-1">Project 1: <i>Static Site Generator</i></span>
+
+In this project, I developed a non-interactive clone of Instagram by designing HTML templates using Jinja2 and static data rendering. The goal was to simulate a user-facing social media experience by designing multiple static pages that emulate the functionality and appearance of a photo-sharing platform like Instagram. The project emphasized template structure, content organization, and consistent styling across a multi-page site. Each page was generated using pre-defined JSON configurations with `insta485generator`, focusing on correct pluralization, user relationships, and content linking across the platform.
+
+### Key Contributions
+
+- **Developed HTML Templates** for six core URL routes:
+  - `/` – Post feed showing all followed users' posts
+  - `/users/<username>/` – User profile with post thumbnails and stats
+  - `/users/<username>/followers/` – List of followers with relationship context
+  - `/users/<username>/following/` – List of followed users
+  - `/posts/<postid>/` – Post detail page with comments and metadata
+  - `/explore/` – Discover page showing users not currently followed
+- **Implemented Template Inheritance** to ensure consistency in layout and structure across pages (e.g., navigation bar, headers, titles).
+- **Handled Dynamic Content Rendering** using placeholders and iteration for:
+  - User relationships (e.g., "following", "not following", or blank for self)
+  - Correct English pluralization for likes, posts, followers, etc.
+  - Post metadata including timestamps, comments, likes, and images
+- **Styled the Application** with a responsive and intuitive layout, using a clean visual hierarchy to replicate the Instagram user experience.
+
+This project solidified my frontend development skills, particularly in writing clean and reusable HTML templates for static content generation. It also gave me valuable experience in organizing dynamic data visually and semantically through a templating approach, laying a strong foundation for more advanced full-stack web development in later parts of the course.
+
+---
+
+### <span id="project-2-3">Projects 2 & 3: <i>Instagram Clone</i></span>
+
+Over a multi-phase project, I built a fully functional Instagram clone from the ground up, transitioning through static HTML templating, server-side dynamic pages, and a responsive client-side application powered by REST APIs. This project gave me end-to-end experience with full-stack web development, covering front-end rendering, backend logic, data persistence, authentication, and cloud deployment.
+
+The final product replicated Instagram’s core features, including account creation, user authentication, uploading and deleting posts, following other users, liking and commenting on posts, and infinite scrolling. The site was deployed to AWS and supported real-time UI updates using JavaScript, without requiring full page reloads.
+
+### Key Contributions
+
+- **Frontend Development**
+  - Designed responsive HTML templates using inheritance and reusable components
+  - Rendered interactive post feeds and user profiles with JavaScript
+  - Implemented client-side functionality for likes, comments, and infinite scrolling
+  - Used `dayjs` to display human-readable timestamps and relative time
+
+- **Backend Development**
+  - Built RESTful API endpoints (`GET`, `POST`, `DELETE`) for posts, likes, comments, and user interactions using Flask
+  - Implemented server-side dynamic rendering for authenticated pages using Jinja templates
+  - Developed robust session handling for login/logout, access control, and route protection
+  - Ensured secure operations through ownership validation and HTTP status code responses (e.g., `403`, `404`, `409`)
+
+- **Database Design & Integration**
+  - Designed and normalized a relational schema with tables for users, posts, comments, likes, and following relationships
+  - Added cascading delete behavior and foreign key constraints for data consistency
+  - Integrated SQL queries to support CRUD operations across all application features
+
+- **Interactive Features**
+  - Enabled real-time interactions: double-click to like, instant comment submission via Enter key
+  - Optimistically updated the UI after creating or deleting comments/likes
+  - Implemented infinite scroll using API pagination and JavaScript event handling
+
+- **Deployment & Testing**
+  - Deployed the full-stack application to AWS with production settings
+  - Verified functionality across all endpoints and ensured secure user flows
+  - Used development tools like `httpie` and browser dev tools for API testing and debugging
+
+This project strengthened my ability to design and build scalable, user-focused web applications from the ground up. I developed a deep understanding of frontend/backend integration, REST API architecture, database design, session management, and deploying real-world systems in the cloud. The layered, iterative approach to development gave me practical experience transitioning from basic templating to a modern, fully interactive client-server web platform.
+
+---
+
+### <span id="project-4">Project 4: <i>MapReduce</i></span>
+
+Developed a fully functioning MapReduce system from scratch using Python, supporting fault-tolerant distributed computation with multiple concurrent Worker processes and a central Manager. This project emphasized low-level systems programming concepts including TCP/UDP networking, multithreading, heartbeat-based fault detection, and dynamic task orchestration across remote processes. The system could accept new job requests (including user-defined mapper and reducer executables), manage multiple concurrent workers, handle worker registration and heartbeat monitoring, and execute full MapReduce jobs across dynamic worker pools. The design included graceful shutdown, robust failure recovery, and out-of-core data handling through Unix streaming. Deployed to AWS for distributed testing and performance validation.
+
+### Key Contributions
+
+- **Distributed Systems Architecture**
+  - Designed and implemented a centralized `Manager` and multiple `Worker` processes communicating over TCP and UDP
+  - Implemented full job orchestration using multithreaded task assignment and coordination for both map and reduce stages
+  - Built a fault-tolerant heartbeat system that marked Workers as dead after 5 missed pings and automatically reassigned their tasks
+
+- **Networking & Concurrency**
+  - Used TCP for command messaging and UDP for heartbeat pings between Workers and the Manager
+  - Leveraged Python’s `socket`, `threading`, and `subprocess` libraries to create a non-blocking, multi-threaded server capable of handling simultaneous Worker communication
+  - Built reusable networking abstractions such as `tcp_server`, `udp_server`, and message dispatching handlers
+
+- **Task Management**
+  - Designed custom `Job` and `RemoteWorker` classes to encapsulate state, track active tasks, and enable dynamic reassignment in case of failures
+  - Implemented round-robin input file partitioning for mappers and used consistent hashing to distribute output keys to reducers
+  - Ensured precise state transitions for tasks and Workers (`ready`, `busy`, `dead`) to enable robust coordination
+
+- **Performance Optimization**
+  - Achieved constant memory usage (`O(1)`) by streaming executable output and piping input using `subprocess.Popen`
+  - Used `heapq.merge()` to efficiently merge sorted intermediate files for reducer input, enabling out-of-core sorting without excessive memory consumption
+
+- **System Robustness & Shutdown**
+  - Supported safe shutdown of the entire system via TCP broadcast messages
+  - Implemented complete cleanup logic to remove intermediate directories and safely terminate threads
+  - Maintained Manager responsiveness under race conditions and non-deterministic Worker execution order
+
+- **Extensibility & Modularity**
+  - Organized the project into well-scoped Python packages: `manager`, `worker`, and `utils`, promoting reuse of logging, networking, and task coordination utilities
+  - Enabled external job submission using structured JSON messages to specify input/output paths, mappers, reducers, and parallelism levels
+
+This project deepened my knowledge of systems-level programming and gave me hands-on experience building a resilient distributed computation framework. I gained fluency in thread-safe design, concurrent programming patterns, and distributed fault-tolerance strategies, all while managing low-level network communication and process lifecycle control. The final implementation reliably executed large-scale MapReduce tasks in the cloud, even under unreliable network or node conditions.
+
+---
+
+### <span id="project-5">Project 5: <i>Search Engine</i></span>
+
+Built a scalable search engine by constructing an inverted index through a pipeline of MapReduce jobs using Python scripts compatible with the Hadoop Streaming Interface. Leveraged Michigan Hadoop (Madoop) to execute multiple MapReduce stages on a large subset of Wikipedia documents focused on Michigan and technology topics. The final inverted index output contains term-level statistics including inverse document frequency, term frequency, and document normalization factors, segmented into multiple partitioned files for distributed serving. The system supports efficient querying by integrating PageRank scores with tf-idf similarity for ranking results. An Index server REST API loads segments of the inverted index and PageRank data to serve JSON-formatted search results, while a Search server aggregates results from multiple Index servers, exposing a user-friendly web interface. The entire system was deployed on AWS for cloud scalability and performance testing.
+
+### Key Contributions
+
+- **MapReduce Pipeline for Inverted Index Construction**
+  - Designed and implemented a multi-stage MapReduce pipeline with up to 9 jobs, each consisting of standalone Python mappers and reducers compatible with Hadoop Streaming
+  - Processed raw HTML Wikipedia documents by extracting doc IDs and clean text, counting total documents, and computing term frequencies and normalization factors
+  - Generated an inverted index sorted by terms and doc IDs, partitioned into three segment files for distributed querying using a custom partitioner and key design (doc_id % 3)
+  - Maintained data integrity with careful handling of leading zeros in doc IDs and used alphabetical sorting of terms for consistency
+
+- **RESTful Index Server**
+  - Developed a Flask-based REST API server that loads an inverted index segment, PageRank scores, and stopwords into memory at startup for low-latency queries
+  - Implemented endpoints such as `/api/v1/hits/` to return ranked search results with doc IDs and relevance scores based on weighted tf-idf and PageRank combination
+  - Supported configurable PageRank weight via query parameters to adjust influence on final ranking dynamically
+
+- **Search Server with Result Aggregation**
+  - Built a dynamic server-side rendered search interface that concurrently queries multiple Index servers (one per inverted index segment)
+  - Merged paginated results using efficient Python tools (`heapq.merge`) to present top-ranked results across distributed segments
+  - Managed a local SQLite document metadata database populated by the `searchdb` script extracting doc details (title, summary, URL) from HTML files using BeautifulSoup for rich result display
+
+- **Advanced Query Processing**
+  - Handled multi-word AND queries by intersecting inverted index results for each term after applying consistent text cleaning matching the index construction
+  - Calculated relevance scores as a linear combination of cosine similarity of tf-idf vectors and PageRank scores to improve search quality
+  - Enabled flexible tuning of PageRank influence through URL parameters, allowing end-user customization of result rankings
+
+- **Deployment**
+  - Successfully deployed the entire search infrastructure on AWS, enabling real-world scalability and performance evaluation
+
+This project provided comprehensive experience in large-scale data processing, distributed system design, and search engine architecture. I gained hands-on skills building robust MapReduce pipelines, RESTful microservices, and multi-threaded query aggregators, culminating in a deployable cloud-based search engine integrating classical information retrieval techniques and link analysis scores.
