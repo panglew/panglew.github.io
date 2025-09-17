@@ -23,7 +23,7 @@ export default function Home() {
       <div className="block h-fit mt-6 sm:w-4/5 w-full px-10">
         <div className="line text-4xl">Hi, I&apos;m Weston.</div>
         <div className="line sm:text-2xl text-xl mt-1">
-          Computer Science Engineering Graduate from the University of Michigan.
+          Software Engineer at Visa
         </div>
         <div className="line">
           <Location />
@@ -34,10 +34,30 @@ export default function Home() {
         <Dropdown icon="terminal" title="Experience">
           {/* <ExperienceList /> */}
           <div className="md:text-base sm:text-sm text-xs sm:max-w-md max-w-sm ">
+            <b>Software Engineer | <a href="https://usa.visa.com/" target="_blank">Visa</a></b>
+            <div className="md:text-sm text-xs text-gray-600 dark:text-gray-400">
+              <div className="flex flex-row justify-between">
+                <p>September 2025 - Current</p>
+              </div>
+            </div>
+            <hr></hr>
+            <div className="md:text-sm text-xs text-gray-600 dark:text-gray-400">
+              <div className="flex flex-row justify-between">
+                <ul>
+                  <li>
+                    Coming Soon
+                  </li>
+                </ul>
+              </div>
+              <p className="text-gray-600 dark:text-gray-400">
+              </p>
+            </div>
+            <br></br>
+
             <b>Orientation Leader | <a href="https://onsp.umich.edu/" target="_blank">University of Michigan</a></b>
             <div className="md:text-sm text-xs text-gray-600 dark:text-gray-400">
               <div className="flex flex-row justify-between">
-                <p>Apr 2023 - Current</p>
+                <p>Apr 2023 - September 2025</p>
               </div>
             </div>
             <hr></hr>
@@ -61,7 +81,7 @@ export default function Home() {
             <b>Founding Software Engineer | <a href="/posts/pick-it-up">Driver's Seat Studios</a></b>
             <div className="md:text-sm text-xs text-gray-600 dark:text-gray-400">
               <div className="flex flex-row justify-between">
-                <p>Oct 2024 - Current</p>
+                <p>Oct 2024 - May 2025</p>
               </div>
             </div>
             <hr></hr>
