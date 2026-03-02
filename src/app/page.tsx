@@ -47,21 +47,27 @@ export default function Home() {
                   <li>
                     Owned backend system design and implementation of an external-facing Early Career challenge platform expected to support 100k+ users, assisting with task scoping and assignment within a small engineering team; platform execution recognized by Visa CTO
                   </li>
+                  <br></br>
                   <li>
                     Introduced Redis caching layer for low-volatility REST endpoints, reducing average API response latency by ~92% and decreasing read load on PostgreSQL-backed services
                   </li>
+                  <br></br>
                   <li>
                     Integrated Apache Kafka to support asynchronous processing of long-running and third-party workflows, enabling retry semantics and eventual consistency across distributed services
                   </li>
+                  <br></br>
                   <li>
                     Developed backend OAuth 2.0 authentication flows in Python, replacing frontend-managed authentication via NextAuth and reducing auth-gated page load times by ~90% while improving reliability of protected routes
                   </li>
+                  <br></br>
                   <li>
                     Implemented server-side RBAC enforcement across protected backend routes, centralizing access control for externally facing platform services
                   </li>
+                  <br></br>
                   <li>
                     Introduced automated stress and load testing framework to validate service reliability under high-concurrency conditions and detect performance regressions prior to release
                   </li>
+                  <br></br>
                   <li>
                     Developed Python FastAPI services backed by a normalized PostgreSQL schema with index query paths to support secure, high-throughput data access across core platform workflows
                   </li>
@@ -156,6 +162,7 @@ export default function Home() {
                 <p>Georgia Institute of Technology, Remote</p>
                 <p>Aug 2026 - Expected May 2028</p>
               </div>
+              <br></br>
             </div>
           </div>
           <div className="md:text-base sm:text-sm text-xs sm:max-w-md max-w-sm ">

@@ -61,7 +61,7 @@ export default function Location() {
       </div>
       <div className="flex flex-row items-center gap-1">
         <Icon name="time" />
-        <Clock locale="en-US" timezone="America/Seattle" />
+        <Clock locale="en-US" timezone="America/Los_Angeles" />
       </div>
     </div>
   );
