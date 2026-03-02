@@ -45,7 +45,25 @@ export default function Home() {
               <div className="flex flex-row justify-between">
                 <ul>
                   <li>
-                    Coming Soon
+                    Owned backend system design and implementation of an external-facing Early Career challenge platform expected to support 100k+ users, assisting with task scoping and assignment within a small engineering team; platform execution recognized by Visa CTO
+                  </li>
+                  <li>
+                    Introduced Redis caching layer for low-volatility REST endpoints, reducing average API response latency by ~92% and decreasing read load on PostgreSQL-backed services
+                  </li>
+                  <li>
+                    Integrated Apache Kafka to support asynchronous processing of long-running and third-party workflows, enabling retry semantics and eventual consistency across distributed services
+                  </li>
+                  <li>
+                    Developed backend OAuth 2.0 authentication flows in Python, replacing frontend-managed authentication via NextAuth and reducing auth-gated page load times by ~90% while improving reliability of protected routes
+                  </li>
+                  <li>
+                    Implemented server-side RBAC enforcement across protected backend routes, centralizing access control for externally facing platform services
+                  </li>
+                  <li>
+                    Introduced automated stress and load testing framework to validate service reliability under high-concurrency conditions and detect performance regressions prior to release
+                  </li>
+                  <li>
+                    Developed Python FastAPI services backed by a normalized PostgreSQL schema with index query paths to support secure, high-throughput data access across core platform workflows
                   </li>
                 </ul>
               </div>
@@ -109,7 +127,7 @@ export default function Home() {
             <b>Machine Learning Engineer | <a href="https://mdst.club/" target="_blank">Michigan Data Science Team</a></b>
             <div className="md:text-sm text-xs text-gray-600 dark:text-gray-400">
               <div className="flex flex-row justify-between">
-                <p>Aug 2021 - May 2025</p>
+                <p>Oct 2022 - Jan 2023</p>
               </div>
             </div>
             <hr></hr>
@@ -131,6 +149,15 @@ export default function Home() {
           </div>
         </Dropdown>
         <Dropdown icon="graduation" title="Education">
+          <div className="md:text-base sm:text-sm text-xs sm:max-w-md max-w-sm ">
+            <p>Master's of Science, Computer Science</p>
+            <div className="md:text-sm text-xs text-gray-600 dark:text-gray-400">
+              <div className="flex flex-row justify-between">
+                <p>Georgia Institute of Technology, Remote</p>
+                <p>Aug 2026 - Expected May 2028</p>
+              </div>
+            </div>
+          </div>
           <div className="md:text-base sm:text-sm text-xs sm:max-w-md max-w-sm ">
             <p>Bachelor's of Science in Engineering, Computer Science</p>
             <div className="md:text-sm text-xs text-gray-600 dark:text-gray-400">
