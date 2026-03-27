@@ -45,19 +45,18 @@ export default function Home() {
               <div className="flex flex-row justify-between">
                 <ul>
                   <li>
-                    Owned backend system design and implementation of an external-facing Early Career challenge platform expected to support 100k+ users, assisting with task scoping and assignment within a small engineering team; platform execution recognized by Visa CTO
+                    Architected an AI-assisted migration system for Visa DPS — processing 25% of all VisaNet global authorizations and 10% of U.S. GDP — to convert 20M+ lines of TAL code to Java, compressing a multi-year timeline to months with a 30x gain in developer productivity                  </li>
+                  <br></br>
+                  <li>
+                    Built MCP servers with dependency mapping databases, transpilation status tracking, a vector database of validated TAL-to-Java conversions, and tooling to surface proprietary ISO 8583 and TAL documentation — giving Claude the context needed to produce accurate Java output
                   </li>
                   <br></br>
                   <li>
-                    Introduced Redis caching layer for low-volatility REST endpoints, reducing average API response latency by ~92% and decreasing read load on PostgreSQL-backed services
+                    Introduced a Redis caching layer for low-volatility REST endpoints that reduced average API response latency by ~92% and cut read load on PostgreSQL-backed services
                   </li>
                   <br></br>
                   <li>
-                    Integrated Apache Kafka to support asynchronous processing of long-running and third-party workflows, enabling retry semantics and eventual consistency across distributed services
-                  </li>
-                  <br></br>
-                  <li>
-                    Developed backend OAuth 2.0 authentication flows in Python, replacing frontend-managed authentication via NextAuth and reducing auth-gated page load times by ~90% while improving reliability of protected routes
+                    Integrated Apache Kafka to support asynchronous processing of long-running and third-party workflows, which enabled retry semantics and eventual consistency across distributed services
                   </li>
                   <br></br>
                   <li>
@@ -65,11 +64,11 @@ export default function Home() {
                   </li>
                   <br></br>
                   <li>
-                    Introduced automated stress and load testing framework to validate service reliability under high-concurrency conditions and detect performance regressions prior to release
+                    Developed server-side OAuth 2.0 authentication and RBAC enforcement in Python, replacing frontend-managed auth via NextAuth and reducing auth-gated page load times by ~90% with improved reliability across protected routes
                   </li>
                   <br></br>
                   <li>
-                    Developed Python FastAPI services backed by a normalized PostgreSQL schema with index query paths to support secure, high-throughput data access across core platform workflows
+                    Owned backend design of an external-facing Early Career challenge platform built to support 100K+ users, with the execution recognized by the Visa CTO
                   </li>
                 </ul>
               </div>
