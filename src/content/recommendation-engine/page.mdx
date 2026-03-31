@@ -1,0 +1,61 @@
+---
+title: "Building a Real-Time Personalized Recommendation Engine"
+date: 3/30/2026
+slug: recommendation-engine
+keywords: [Distributed Systems, Go, Redis, PostgreSQL, Docker, Machine Learning]
+description: An in-progress deep dive into building a distributed recommendation system in Go, modeled after production architectures at Netflix and YouTube.
+---
+
+<PostHeader title={metadata.title} date={new Date(metadata.date)}/>
+
+> **Note:** This project is actively in development. The architecture and implementation details described below reflect current design decisions, some of which are still being built out and may evolve.
+
+One of the things I've always found fascinating about platforms like Netflix and YouTube is that the hardest engineering problems are completely invisible to the user. You click something, and half a second later you have a ranked list of things you might actually want to watch. What's happening under the hood — event pipelines, feature stores, vector search, real-time re-ranking — is some of the most interesting distributed systems work being done anywhere. So I decided to build my own version of it.
+
+---
+
+## Why This Project
+
+Coming off projects like a Paxos-based key-value store, a MapReduce implementation, and an adaptive bitrate HTTP proxy, I wanted to build something that combined distributed systems depth with a genuine product problem. Recommendation is that intersection. The ML model itself is almost the least interesting part — the hard problems are around data freshness, serving latency, and closing the feedback loop in real time without retraining. That's what this project is focused on.
+
+---
+
+## How It's Being Built
+
+The system will be split across three independent services, each containerized and independently deployable via Docker Compose.
+
+When a user interacts with content — a click, a skip, time spent watching — the **event producer** will capture that signal and durably record it using the outbox pattern before forwarding it to a Redpanda message queue. The outbox pattern matters here because it guarantees no events are silently dropped if the queue goes down momentarily, which is exactly the kind of failure that's hard to debug and easy to prevent upfront.
+
+From there, a **stream processor** will consume the event queue and maintain rolling windows of per-user behavioral state. Every few minutes it will flush aggregated features — things like content affinity scores and recently engaged items — into a two-layer store: Redis for fast reads at serving time, and Postgres as the durable source of truth.
+
+When the **recommendation service** receives a request, the plan is to pull the user's current feature vector from Redis (targeting under 10ms), query a FAISS index for candidate items using approximate nearest-neighbor search over learned latent vectors, and then re-rank those candidates using fresh signals from Redis. That re-ranking step is what closes the feedback loop — a user who just spent time engaging with a certain type of content will see that reflected in their next set of recommendations without waiting for a full model retrain.
+
+---
+
+## What's Been Interesting So Far
+
+The most counterintuitive realization so far is that the ML model is genuinely not the hard part. A basic matrix factorization model trained on the MovieLens dataset should produce reasonable results. The hard part is everything around it — making sure features are fresh, keeping serving latency low, and ensuring the pipeline doesn't silently fall behind under load.
+
+Designing for failure from the start has also shaped a lot of early decisions. In a system with this many moving parts — three services, a message queue, two databases — things will go down. Each service will implement retry logic with exponential backoff rather than relying on Docker's `depends_on`, because in production, dependencies don't just fail at startup — they fail at 2am on a Tuesday.
+
+---
+
+## Where This Could Go
+
+Once the core recommendation engine is working end to end, the natural next step would be expanding this into a lightweight streaming platform — which would make the recommendation system a lot more meaningful in context.
+
+That would mean building out a video ingestion and transcoding pipeline: users upload raw video, the system splits it into chunks, transcodes each chunk in parallel across workers at multiple quality levels (360p, 720p, 1080p), and reassembles the output. An adaptive bitrate layer — similar to what I built in my HTTP proxy project — would then select the right quality level per user based on their current network conditions. At that point the recommendation engine isn't a standalone service anymore, it's the layer that determines what a real user watches next on a real platform, which is exactly how it works at Netflix.
+
+That's the long-term vision. For now, the focus is on getting the pipeline right.
+
+---
+
+## What's Next
+
+The immediate focus is standing up the three core services and getting events flowing end to end from producer to stream processor to Redis. After that, the plan is to wire in the FAISS index and build out the re-ranking layer, followed by offline evaluation using Precision@K and NDCG against held-out interaction data.
+
+I'll keep this updated as the project progresses.
+
+---
+
+**Tech:** Go · Redpanda · Redis · PostgreSQL · FAISS · Docker · Anthropic API

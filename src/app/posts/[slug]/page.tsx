@@ -10,6 +10,7 @@ export default async function Page({ params }: DynamicPageParams) {
 
 export function generateStaticParams() {
   return [
+    { slug: "recommendation-engine" },
     { slug: "pick-it-up" },
     { slug: "eecs494" },
     { slug: "eecs491" },

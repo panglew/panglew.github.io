@@ -11,10 +11,8 @@ interface DropdownProps {
 }
 
 export default function Dropdown({ icon, title, children }: DropdownProps) {
-  const [contentVisible, setContentVisibility] = useState(false);
-  const [visibleAnim, setVisibleAnim] = useState<gsap.core.Timeline | null>(
-    null
-  );
+  const [isOpen, setIsOpen] = useState(false);
+  const [visibleAnim, setVisibleAnim] = useState<gsap.core.Timeline | null>(null);
 
   const dropdown = useRef<HTMLDivElement>(null);
   const content = useRef<HTMLDivElement>(null);
@@ -22,29 +20,20 @@ export default function Dropdown({ icon, title, children }: DropdownProps) {
 
   const { contextSafe } = useGSAP(
     () => {
+      gsap.set(content.current, { height: 0, opacity: 0 });
+
       let tl = gsap.timeline({ paused: true });
-      tl.fromTo(
-        content.current,
-        {
-          yPercent: -100,
-          opacity: 0,
-        },
-        {
-          yPercent: 0,
-          duration: 1,
-          opacity: 1,
-          onStart: () => setContentVisibility(true),
-          onReverseComplete: () => setContentVisibility(false),
-          ease: "power3.out",
-        }
-      );
+      tl.to(content.current, {
+        height: "auto",
+        opacity: 1,
+        duration: 0.5,
+        ease: "power3.out",
+        onStart: () => setIsOpen(true),
+        onReverseComplete: () => setIsOpen(false),
+      });
       tl.to(
         arrow.current,
-        {
-          rotate: 180,
-          duration: 1,
-          ease: "power3.out",
-        },
+        { rotate: 180, duration: 0.5, ease: "power3.out" },
         0
       );
       setVisibleAnim(tl);
@@ -53,7 +42,7 @@ export default function Dropdown({ icon, title, children }: DropdownProps) {
   );
 
   const toggle = contextSafe(() => {
-    if (contentVisible) {
+    if (isOpen) {
       visibleAnim?.timeScale(1).reverse();
     } else {
       visibleAnim?.play();
@@ -70,14 +59,12 @@ export default function Dropdown({ icon, title, children }: DropdownProps) {
         <div ref={arrow}>
           <Icon name="caret_up" />
         </div>
-        <h1>{title}</h1>
+        <span className="text-base font-medium">{title}</span>
         <Icon name={icon} />
       </button>
-      <div className="overflow-hidden">
-        <div ref={content}>
-          {contentVisible && (
-            <div className="flex flex-col ml-6 my-2 items-left">{children}</div>
-          )}
+      <div ref={content} className="overflow-hidden">
+        <div className="flex flex-col ml-6 my-2 items-left">
+          {children}
         </div>
       </div>
     </div>

@@ -15,6 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: "https://panglew.github.io/posts/recommendation-engine",
+      lastModified: new Date(2026, 3, 31),
+      changeFrequency: "never",
+      priority: 0.5,
+    },
+    {
       url: "https://panglew.github.io/posts/pick-it-up",
       lastModified: new Date(2025, 2, 9),
       changeFrequency: "never",
